@@ -6,6 +6,7 @@ gem 'puma', '~> 3.0'
 
 gem 'dotenv-rails'
 gem 'awesome_print'
+gem 'httparty'
 
 group :development, :test do
   gem 'byebug', platform: :mri
