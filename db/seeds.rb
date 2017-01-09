@@ -1,8 +1,8 @@
-address1 = Address.new(line_1: "123O9 Ventura Street",
+address1 = Address.new(line_1: "101 Quintara St.",
                        line_2: nil,
-                       city: 'Santa Monica',
+                       city: 'San Francisco',
                        state: 'CA',
-                       primary_zip: 90401,
+                       primary_zip: 94116,
                        extended_zip: nil)
 
 address2 = Address.new(line_1: "12345 Dinosaur Lane",
@@ -26,16 +26,16 @@ user2 = User.create(first_name: 'Nathan',
                     address: address2,
                     user_type: 1)
 
+district1 = District.create(name: "California 1st",
+                            state: "CA",
+                            campaign_id: 1)
+
 rep1 = Representative.create(district: district1,
                              rep_type: 1,
                              state: "CA",
                              first_name: "Jim",
                              last_name: "Jones",
                              party: 1)
-
-district1 = District.create(name: "California 1st",
-                            state: "CA",
-                            campaign_id: 1)
 
 campaign1 = Campaign.create(owner: user2,
                             title: "Education for kids",
