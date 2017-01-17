@@ -26,7 +26,6 @@ user2 = User.create(first_name: 'Nathan',
                     address: address2,
                     user_type: 1)
 
-
 user3 = User.create(first_name: 'Tina',
                    last_name: 'TinaTina',
                    email: 'tinam@tinam.com',
@@ -54,6 +53,7 @@ campaign1 = Campaign.create(owner: user2,
 
 campaign1.users << user1
 campaign1.users << user2
+campaign1.users << user3
 
 campaign1.tags.create(name: "Education")
 campaign1.tags.create(name: "Kids")
