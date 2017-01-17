@@ -1,18 +1,18 @@
-address1 = Address.new(line_1: "101 Quintara St.",
+address1 = Address.new(line_1: "1 W Portal Ave",
                        line_2: nil,
                        city: 'San Francisco',
                        state: 'CA',
-                       primary_zip: 94116,
+                       primary_zip: 94127,
                        extended_zip: nil)
 
-address2 = Address.new(line_1: "12345 Dinosaur Lane",
+address2 = Address.new(line_1: "633 Folsom Street",
                        line_2: nil,
                        city: 'San Francisco',
                        state: 'CA',
-                       primary_zip: 94116,
+                       primary_zip: 94107,
                        extended_zip: nil)
 
-user = User.create(first_name: 'Tom',
+user1 = User.create(first_name: 'Tom',
                    last_name: 'TomTom',
                    email: 'tom@tom.com',
                    phone: '(415) 555-0420',
@@ -25,6 +25,14 @@ user2 = User.create(first_name: 'Nathan',
                     phone: '(123) 123-1234',
                     address: address2,
                     user_type: 1)
+
+
+user3 = User.create(first_name: 'Tina',
+                   last_name: 'TinaTina',
+                   email: 'tinam@tinam.com',
+                   phone: '(415) 555-0490',
+                   address: address1,
+                   user_type: 1)
 
 district1 = District.create(name: "California 1st",
                             state: "CA",
@@ -43,6 +51,9 @@ campaign1 = Campaign.create(owner: user2,
                             start_date: DateTime.new,
                             end_date: DateTime.new + 10
                             )
+
+campaign1.users << user1
+campaign1.users << user2
 
 campaign1.tags.create(name: "Education")
 campaign1.tags.create(name: "Kids")
