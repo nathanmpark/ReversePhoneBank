@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161212052000) do
+ActiveRecord::Schema.define(version: 20170129002609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,34 +54,67 @@ ActiveRecord::Schema.define(version: 20161212052000) do
     t.integer  "owner_id"
   end
 
-  create_table "district_addresses", force: :cascade do |t|
+  create_table "district_users", force: :cascade do |t|
     t.integer  "district_id"
-    t.integer  "address_id"
+    t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["address_id"], name: "index_district_addresses_on_address_id", using: :btree
-    t.index ["district_id"], name: "index_district_addresses_on_district_id", using: :btree
+    t.index ["district_id"], name: "index_district_users_on_district_id", using: :btree
+    t.index ["user_id"], name: "index_district_users_on_user_id", using: :btree
   end
 
   create_table "districts", force: :cascade do |t|
-    t.integer  "campaign_id"
     t.string   "name"
-    t.string   "state"
+    t.string   "division_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["campaign_id"], name: "index_districts_on_campaign_id", using: :btree
   end
 
-  create_table "representatives", force: :cascade do |t|
+  create_table "offices", force: :cascade do |t|
+    t.string   "name"
+    t.string   "division_id"
     t.integer  "district_id"
-    t.integer  "rep_type"
-    t.string   "state"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.integer  "party"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["district_id"], name: "index_representatives_on_district_id", using: :btree
+    t.index ["district_id"], name: "index_offices_on_district_id", using: :btree
+  end
+
+  create_table "rep_channels", force: :cascade do |t|
+    t.string   "channel_type"
+    t.string   "channel_id"
+    t.integer  "rep_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["rep_id"], name: "index_rep_channels_on_rep_id", using: :btree
+  end
+
+  create_table "rep_phone_numbers", force: :cascade do |t|
+    t.string   "number"
+    t.integer  "rep_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rep_id"], name: "index_rep_phone_numbers_on_rep_id", using: :btree
+  end
+
+  create_table "rep_urls", force: :cascade do |t|
+    t.string   "url"
+    t.integer  "rep_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["rep_id"], name: "index_rep_urls_on_rep_id", using: :btree
+  end
+
+  create_table "reps", force: :cascade do |t|
+    t.string   "party"
+    t.string   "name"
+    t.string   "email"
+    t.string   "img_url"
+    t.integer  "address_id"
+    t.integer  "office_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["address_id"], name: "index_reps_on_address_id", using: :btree
+    t.index ["office_id"], name: "index_reps_on_office_id", using: :btree
   end
 
   create_table "tags", force: :cascade do |t|
@@ -106,9 +139,13 @@ ActiveRecord::Schema.define(version: 20161212052000) do
   add_foreign_key "campaign_tags", "tags"
   add_foreign_key "campaign_users", "campaigns"
   add_foreign_key "campaign_users", "users"
-  add_foreign_key "district_addresses", "addresses"
-  add_foreign_key "district_addresses", "districts"
-  add_foreign_key "districts", "campaigns"
-  add_foreign_key "representatives", "districts"
+  add_foreign_key "district_users", "districts"
+  add_foreign_key "district_users", "users"
+  add_foreign_key "offices", "districts"
+  add_foreign_key "rep_channels", "reps"
+  add_foreign_key "rep_phone_numbers", "reps"
+  add_foreign_key "rep_urls", "reps"
+  add_foreign_key "reps", "addresses"
+  add_foreign_key "reps", "offices"
   add_foreign_key "users", "addresses"
 end
