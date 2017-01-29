@@ -18,6 +18,10 @@ class User < ApplicationRecord
 
   validates :address, presence: true
 
+  def address_string
+    self.address.to_s
+  end
+
   def assign_districts
 
     return false unless @rep_data
@@ -88,7 +92,7 @@ class User < ApplicationRecord
 
   def update_voter_info
     @CivicAdapter = CivicAPIAdapter.new
-    @rep_data = @CivicAdapter.get_reps(self.address.to_s)
+    @rep_data = @CivicAdapter.get_reps(address_string)
     assign_districts
   end
 
