@@ -1,6 +1,6 @@
 class Rep < ApplicationRecord
   belongs_to :office
-  belongs_to :address
+  belongs_to :address, optional: true
   has_many :campaign_reps
   has_many :campaigns, through: :campaign_reps
   has_many :rep_phone_numbers

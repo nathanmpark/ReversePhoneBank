@@ -16,23 +16,37 @@ class User < ApplicationRecord
 
   after_create :update_voter_info
 
+  validates :address, presence: true
+
   def assign_districts
+
+    return false unless @rep_data
+
     # Go through divisions, find or create districts
     @rep_data['divisions'].map do |division_id, division_data|
 
       district = self.districts.find_or_create_by(division_id: division_id)
       district.update(name: division_data['name'])
-      district.save
+
+      unless district.save
+        p "!" * 100
+        ap district.errors
+      end
 
       # Go through division refs, find or create offices
       division_data['officeIndices'].map do |office_id|
 
         office = district.offices.find_or_create_by(name: @rep_data['offices'][office_id]['name'])
         office.update(division_id: @rep_data['offices'][office_id]['divisionId'])
-        office.save
+
+        unless office.save
+          p "!" * 100
+          ap office.errors
+        end
 
         # Go through office refs, find or create reps
         @rep_data['offices'][office_id]['officialIndices'].map do |official_id|
+
           rep = office.reps.find_or_create_by(name: @rep_data['officials'][official_id]['name'])
           rep.update(party: @rep_data['officials'][official_id]['party'])
           rep.update(img_url: @rep_data['officials'][official_id]['photoUrl'])
@@ -47,7 +61,10 @@ class User < ApplicationRecord
             primary_zip: @rep_data['officials'][official_id]['address'][0]['zip'],
             ) if @rep_data['officials'][official_id]['address']
 
-          rep.save
+          unless rep.save
+            p "!" * 100
+            ap rep.errors
+          end
 
           @rep_data['officials'][official_id]['urls'].map do |url|
             rep.urls.find_or_create_by(url: url)
@@ -66,6 +83,7 @@ class User < ApplicationRecord
         end
       end
     end
+    true
   end
 
   def update_voter_info
