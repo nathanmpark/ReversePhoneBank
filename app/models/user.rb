@@ -14,24 +14,30 @@ class User < ApplicationRecord
 
   has_many :owned_campaigns, foreign_key: 'owner_id', class_name: :Campaign
 
-  def assign_offices
-
-  end
+  after_create :update_voter_info
 
   def assign_districts
+    # Go through divisions, find or create districts
     @rep_data['divisions'].map do |division_id, division_data|
+
       district = self.districts.find_or_create_by(division_id: division_id)
       district.update(name: division_data['name'])
       district.save
+
+      # Go through division refs, find or create offices
       division_data['officeIndices'].map do |office_id|
+
         office = district.offices.find_or_create_by(name: @rep_data['offices'][office_id]['name'])
         office.update(division_id: @rep_data['offices'][office_id]['divisionId'])
         office.save
+
+        # Go through office refs, find or create reps
         @rep_data['offices'][office_id]['officialIndices'].map do |official_id|
           rep = office.reps.find_or_create_by(name: @rep_data['officials'][official_id]['name'])
           rep.update(party: @rep_data['officials'][official_id]['party'])
           rep.update(img_url: @rep_data['officials'][official_id]['photoUrl'])
           rep.update(email: @rep_data['officials'][official_id]['emails'][0]) if @rep_data['officials'][official_id]['emails']
+
 
           rep.address = Address.find_or_create_by(
             line_1: @rep_data['officials'][official_id]['address'][0]['line1'],
@@ -57,20 +63,14 @@ class User < ApplicationRecord
               channel_id: channel['id'])
           end if @rep_data['officials'][official_id]['channels']
 
-
-          # ap rep
         end
       end
-
-      # assign_offices
-      # assign_reps
     end
   end
 
   def update_voter_info
     @CivicAdapter = CivicAPIAdapter.new
     @rep_data = @CivicAdapter.get_reps(self.address.to_s)
-    p "-" * 80
     assign_districts
   end
 
