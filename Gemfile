@@ -10,8 +10,8 @@ gem 'dotenv-rails'
 gem 'awesome_print'
 gem 'httparty'
 
-gem "active_model_serializers", github: "rails-api/active_model_serializers"
-
+gem "active_model_serializers"
+gem 'rack-cors'
 
 group :development, :test do
   gem 'byebug', platform: :mri
