@@ -25,6 +25,7 @@ class User < ApplicationRecord
   def assign_districts
 
     return false unless @rep_data
+    return false unless @rep_data['divisions']
 
     # Go through divisions, find or create districts
     @rep_data['divisions'].map do |division_id, division_data|
@@ -37,7 +38,8 @@ class User < ApplicationRecord
         ap district.errors
       end
 
-      # Go through division refs, find or create offices
+      # Go through division refs, find or create offices if offices
+      break unless division_data['officeIndices']
       division_data['officeIndices'].map do |office_id|
 
         office = district.offices.find_or_create_by(name: @rep_data['offices'][office_id]['name'])
@@ -48,7 +50,8 @@ class User < ApplicationRecord
           ap office.errors
         end
 
-        # Go through office refs, find or create reps
+        # Go through office refs, find or create reps if reps
+        break unless @rep_data['offices'][office_id]['officialIndices']
         @rep_data['offices'][office_id]['officialIndices'].map do |official_id|
 
           rep = office.reps.find_or_create_by(name: @rep_data['officials'][official_id]['name'])
@@ -71,15 +74,15 @@ class User < ApplicationRecord
           end
 
           @rep_data['officials'][official_id]['urls'].map do |url|
-            rep.urls.find_or_create_by(url: url)
+            rep.rep_urls.find_or_create_by(url: url)
           end if @rep_data['officials'][official_id]['urls']
 
           @rep_data['officials'][official_id]['phones'].map do |phone|
-            rep.phone_numbers.find_or_create_by(number: phone)
+            rep.rep_phone_numbers.find_or_create_by(number: phone)
           end if @rep_data['officials'][official_id]['phones']
 
           @rep_data['officials'][official_id]['channels'].map do |channel|
-            rep.channels.find_or_create_by(
+            rep.rep_channels.find_or_create_by(
               channel_type: channel['type'],
               channel_id: channel['id'])
           end if @rep_data['officials'][official_id]['channels']
@@ -93,6 +96,7 @@ class User < ApplicationRecord
   def update_voter_info
     @CivicAdapter = CivicAPIAdapter.new
     @rep_data = @CivicAdapter.get_reps(address_string)
+    # ap @rep_data
     assign_districts
   end
 
