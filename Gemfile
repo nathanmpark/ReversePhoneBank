@@ -16,6 +16,8 @@ gem 'rack-cors'
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
+  gem 'webmock'
+  gem 'vcr'
 end
 
 group :development do
