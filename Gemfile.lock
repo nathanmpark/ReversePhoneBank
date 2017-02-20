@@ -47,6 +47,7 @@ GEM
       public_suffix (~> 2.0, >= 2.0.2)
     arel (7.1.4)
     awesome_print (1.7.0)
+    bcrypt (3.1.11)
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -80,6 +81,7 @@ GEM
       jsonapi-renderer (= 0.1.1.beta1)
     jsonapi-parser (0.1.1.beta3)
     jsonapi-renderer (0.1.1.beta1)
+    jwt (1.5.6)
     listen (3.0.8)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -153,6 +155,7 @@ GEM
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
     safe_yaml (1.0.4)
+    simple_command (0.0.9)
     spring (2.0.0)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -184,11 +187,13 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   awesome_print
+  bcrypt
   better_errors
   binding_of_caller
   byebug
   dotenv-rails
   httparty
+  jwt
   listen (~> 3.0.5)
   pg (~> 0.18)
   puma (~> 3.0)
@@ -196,6 +201,7 @@ DEPENDENCIES
   rails (~> 5.0.0, >= 5.0.0.1)
   rails-controller-testing
   rspec-rails
+  simple_command
   spring
   spring-watcher-listen (~> 2.0.0)
   vcr

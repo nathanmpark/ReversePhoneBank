@@ -13,6 +13,11 @@ gem 'httparty'
 gem "active_model_serializers"
 gem 'rack-cors'
 
+# Auth gems
+gem 'bcrypt'
+gem 'simple_command'
+gem 'jwt'
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
