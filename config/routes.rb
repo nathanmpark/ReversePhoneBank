@@ -3,5 +3,6 @@ Rails.application.routes.draw do
 
   root "users#index"
   resources :users
+  post 'authenticate', to: 'authentication#authenticate'
 
 end
