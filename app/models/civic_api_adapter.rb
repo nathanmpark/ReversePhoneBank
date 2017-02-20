@@ -9,12 +9,7 @@ class CivicAPIAdapter
   end
 
   def get_reps(address)
-    # @options = {query: { key: @token, address: '101 Quintara St. San Francisco, CA' } }
-    @options = {query: { key: @token, address: address } }
-    # p "*" * 50
-    # p @options
-    response = self.class.get("/representatives", @options)
-    # ap response
-    # response
+    @options = { query: { key: @token, address: address } }
+    self.class.get('/representatives', @options)
   end
 end

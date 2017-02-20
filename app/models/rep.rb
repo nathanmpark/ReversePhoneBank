@@ -1,14 +1,19 @@
 class Rep < ApplicationRecord
+
   belongs_to :office
   belongs_to :address, optional: true
+
   has_many :campaign_reps
   has_many :campaigns, through: :campaign_reps
+
   has_many :rep_phone_numbers
   has_many :rep_channels
   has_many :rep_urls
 
+  validates :name, uniqueness: true
+
   def phone_numbers
-    self.rep_phone_numbers.map {|num_obj| num_obj.number}
+    self.rep_phone_numbers.map { |num_obj| num_obj.number }
   end
 
   def channels
