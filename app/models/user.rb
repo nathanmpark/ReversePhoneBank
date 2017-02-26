@@ -32,7 +32,8 @@ class User < ApplicationRecord
     # Go through divisions, find or create districts
     @rep_data['divisions'].map do |division_id, division_data|
 
-      district = self.districts.find_or_create_by(division_id: division_id)
+      district = District.find_or_initialize_by(division_id: division_id)
+      self.districts << district
       district.update(name: division_data['name'])
 
       unless district.save
@@ -45,6 +46,7 @@ class User < ApplicationRecord
       division_data['officeIndices'].map do |office_id|
 
         office = district.offices.find_or_create_by(name: @rep_data['offices'][office_id]['name'])
+        next unless office.reps.empty?
         office.update(division_id: @rep_data['offices'][office_id]['divisionId'])
 
         unless office.save
@@ -56,11 +58,10 @@ class User < ApplicationRecord
         break unless @rep_data['offices'][office_id]['officialIndices']
         @rep_data['offices'][office_id]['officialIndices'].map do |official_id|
 
-          rep = office.reps.find_or_create_by(name: @rep_data['officials'][official_id]['name'])
+          rep = office.reps.create(name: @rep_data['officials'][official_id]['name'])
           rep.update(party: @rep_data['officials'][official_id]['party'])
           rep.update(img_url: @rep_data['officials'][official_id]['photoUrl'])
           rep.update(email: @rep_data['officials'][official_id]['emails'][0]) if @rep_data['officials'][official_id]['emails']
-
 
           rep.address = Address.find_or_create_by(
             line_1: @rep_data['officials'][official_id]['address'][0]['line1'],
@@ -98,7 +99,7 @@ class User < ApplicationRecord
   def update_voter_info
     @CivicAdapter = CivicAPIAdapter.new
     @rep_data = @CivicAdapter.get_reps(address_string)
-    # ap @rep_data
+    ap @rep_data
     assign_districts
   end
 
