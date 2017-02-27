@@ -56,6 +56,15 @@ user4 = User.create(first_name: 'Levis',
                    password_confirmation: 'tomtom',
                    user_type: 1)
 
+user4 = User.create(first_name: 'Terri',
+                   last_name: 'SampleAmerican',
+                   email: 'sample@sample.com',
+                   phone: '(352) 555-0420',
+                   address: address3,
+                   password: 'tomtom',
+                   password_confirmation: 'tomtom',
+                   user_type: 1)
+
 campaign1 = Campaign.create(owner: user2,
                             title: "Education for kids",
                             description: "Kids need to learn things too",

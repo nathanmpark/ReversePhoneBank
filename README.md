@@ -3,6 +3,8 @@
 
 This app represents the API component of the Reverse Phone Bank.
 
+The server is currently deployed @ https://rpb-dev-api.herokuapp.com
+
 ### Usage
 
 Currently native clients can consume the following endpoints:
@@ -10,8 +12,9 @@ Currently native clients can consume the following endpoints:
 * GET /users
 * GET /users/:id
 * POST /users
+* POST /address_lookup
 
-POST Attributes:
+User Attributes:
 ```
 user[first_name]
 user[last_name]
@@ -25,16 +28,6 @@ user[address][primary_zip]
 user[address][extended_zip]
 ```
 
-
-Sample POST:
-```
-https://rpb-dev-api.herokuapp.com/users?user[first_name]=Bugs&user[last_name]=Life&user[email]=bugs@example.com&user[phone]=(415) 689-5233&user[address][line_1]=2178 S.W. CR 534&user[address][city]=Mayo&user[address][state]=FL&user[address][primary_zip]=32066
-```
-
-The server is currently deployed @ https://rpb-dev-api.herokuapp.com
-
-### Authorization
-
 #### Logging In:
 
 ```bash
@@ -46,7 +39,7 @@ Returns a payload like:
 {"auth_token":"eyJ3eXAiOiJKV1QiLCJhbGciOiJIYzI1NiJ9.eyJ1c2VyX2lkLjoxLCJleHAiOjE0ODgyMiE0MzB9.CVqAjD1cii0HKwYbI3xgAMT3kfkiRhbRAXLs_n97rWU"}
 ```
 
-#### Navigation
+#### Restricted Routes
 
 Access any restricted page by sending the auth token you received at login as an Authorization header.
 
@@ -111,30 +104,100 @@ Returns a Payload like:
         "Facebook": "whitehouse",
         "Twitter": "whitehouse"
       }
-    },
-    {
-      "name": "Jackie Speier",
-      "party": "Democratic",
-      "email": null,
-      "img_url": "https://speier.house.gov/sites/speier.house.gov/files/documents/gray%20jacket%20KB%20retouch.jpg",
-      "address_string": "211 Cannon House Office Building Washington, DC 20515",
-      "public_office": "United States House of Representatives CA-14",
-      "public_office_id": "ocd-division/country:us/state:ca/cd:14",
-      "phone_numbers": [
-        "(202) 225-3531"
-      ],
-      "urls": [
-        "http://speier.house.gov/"
-      ],
-      "channels": {
-        "Facebook": "JackieSpeier",
-        "Twitter": "RepSpeier",
-        "YouTube": "JackieSpeierCA14"
-      }
     }
   ]
 }
 ```
+
+#### Lookup Reps for a non registered user
+
+Note: An address must have at a minimum, a line_1 and a primary_zip attribute. Also this route utilizes a dummy user with email 'sample@sample.com' to make the rep relations valid.
+
+```bash
+curl -d 'address[line_1]=242%20Molimo%20Drive&address[primary_zip]=94127' http://localhost:3000/address_lookup
+```
+
+Returns a payload like:
+```json
+[
+  {
+    "id": 43,
+    "name": "Greg Abbott",
+    "party": "Republican",
+    "email": null,
+    "img_url": "http://gov.texas.gov/multimedia/photos/2015-GovernorAbbott-Portrait.jpg",
+    "address_string": "P.O. Box 12428 Austin, TX 78711",
+    "public_office": "Governor",
+    "public_office_id": "ocd-division/country:us/state:tx",
+    "uuid": "263e6e7a-0a52-48be-9e02-657b25e76b5f",
+    "phone_numbers": [
+      "(512) 463-2000"
+    ],
+    "urls": [
+      "http://www.governor.state.tx.us/"
+    ],
+    "channels": {
+      "GooglePlus": "114575192028324795215",
+      "Facebook": "TexasGovernor",
+      "Twitter": "TexGov"
+    }
+  },
+  {
+    "id": 1,
+    "name": "Donald J. Trump",
+    "party": "Republican",
+    "email": null,
+    "img_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/45/PE%20Color.jpg",
+    "address_string": "The White House 1600 Pennsylvania Avenue NW Washington, DC 20500",
+    "public_office": "President of the United States",
+    "public_office_id": "ocd-division/country:us",
+    "uuid": "ab638d15-0caf-4abc-a8d2-bb95a581ce74",
+    "phone_numbers": [
+      "(202) 456-1111"
+    ],
+    "urls": [
+      "http://www.whitehouse.gov/"
+    ],
+    "channels": {
+      "GooglePlus": "+whitehouse",
+      "Facebook": "whitehouse",
+      "Twitter": "whitehouse",
+      "YouTube": "whitehouse"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Mike Pence",
+    "party": "Republican",
+    "email": null,
+    "img_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/45/VPE%20Color.jpg",
+    "address_string": "The White House 1600 Pennsylvania Avenue NW Washington, DC 20500",
+    "public_office": "Vice-President of the United States",
+    "public_office_id": "ocd-division/country:us",
+    "uuid": "955044a8-bbbd-41bc-9ca6-ec7832fc7297",
+    "phone_numbers": [
+      "(202) 456-1111"
+    ],
+    "urls": [
+      "http://www.whitehouse.gov/"
+    ],
+    "channels": {
+      "GooglePlus": "+whitehouse",
+      "Facebook": "whitehouse",
+      "Twitter": "whitehouse"
+    }
+  }
+]
+```
+
+#### Registering a new User
+
+```bash
+curl -d 'user[first_name]=Bugs&user[last_name]=Bunny&user[email]=bugs@bunny.com&user[phone]=(342)%20555-5578&user[password]=tomtom&user[password_confirmation]=tomtom&user[address][line_1]=4850%20SW%20Snow%20Cir&user[address][city]=Holt&user[address][state]=MO&user[address][primary_zip]=64048' http://localhost:3000/users
+```
+
+Valid User returns User show
+
 ### Contributing
 PRs/Issues welcome.
 
