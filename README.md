@@ -11,8 +11,8 @@ Currently native clients can consume the following endpoints:
 * GET /users/:id
 * POST /users
 
-accepting:
-```html
+POST Attributes:
+```
 user[first_name]
 user[last_name]
 user[email]
@@ -23,6 +23,12 @@ user[address][city]
 user[address][state]
 user[address][primary_zip]
 user[address][extended_zip]
+```
+
+
+Sample POST:
+```
+https://rpb-dev-api.herokuapp.com/users?user[first_name]=Bugs&user[last_name]=Life&user[email]=bugs@example.com&user[phone]=(415) 689-5233&user[address][line_1]=2178 S.W. CR 534&user[address][city]=Mayo&user[address][state]=FL&user[address][primary_zip]=32066
 ```
 
 The server is currently deployed @ https://rpb-dev-api.herokuapp.com

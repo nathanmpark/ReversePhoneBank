@@ -1,12 +1,15 @@
 class UsersController < ApplicationController
 
   def index
+    @users = User.all
+    render json: @users
   end
 
   def show
     @user = User.find_by(id: params[:id])
+    # Defaults to first user for debugging
     @user = User.find(1) unless params[:id]
-    render json: @user, include: { offices: { include: { reps: {include: [:urls, :phone_numbers, :channels, ]} } }}
+    render json: @user
   end
 
   def create
@@ -19,11 +22,12 @@ class UsersController < ApplicationController
 
     address = Address.new(
       line_1: user_params[:address][:line_1],
-      line_2: user_params[:address][:line_2],
       city: user_params[:address][:city],
       state: user_params[:address][:state],
-      primary_zip: user_params[:address][:primary_zip],
-      extended_zip: user_params[:address][:extended_zip])
+      primary_zip: user_params[:address][:primary_zip])
+
+      address.extended_zip.try(user_params[:address][:extended_zip])
+      address.line_2.try(user_params[:address][:line_2])
 
     if address.save
       @user.address = address

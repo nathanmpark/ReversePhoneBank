@@ -1,0 +1,1894 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.googleapis.com/civicinfo/v2/representatives?address=631%20Folsom%20Street%20San%20Francisco,%20CA&key=AIzaSyCuFyDjIpvOTKqWmiFrETtgYSTzw0mtAv0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Fri, 10 Feb 2017 03:07:30 GMT
+      Date:
+      - Fri, 10 Feb 2017 03:07:30 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"QYIb6hT4IEibTNmpmkuDYCNGqvQ/FyPy4V9zwoZ7eQebGbCAt_bbwoM"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '16868'
+      Server:
+      - GSE
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="35,34"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "civicinfo#representativeInfoResponse",
+         "normalizedInput": {
+          "line1": "631 Folsom Street",
+          "city": "San Francisco",
+          "state": "CA",
+          "zip": "94107"
+         },
+         "divisions": {
+          "ocd-division/country:us": {
+           "name": "United States",
+           "officeIndices": [
+            0,
+            1
+           ]
+          },
+          "ocd-division/country:us/state:ca": {
+           "name": "California",
+           "officeIndices": [
+            2,
+            4,
+            5,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21
+           ]
+          },
+          "ocd-division/country:us/state:ca/cd:12": {
+           "name": "California's 12th congressional district",
+           "officeIndices": [
+            3
+           ]
+          },
+          "ocd-division/country:us/state:ca/county:san_francisco": {
+           "name": "San Francisco County",
+           "alsoKnownAs": [
+            "ocd-division/country:us/state:ca/place:san_francisco"
+           ],
+           "officeIndices": [
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14
+           ]
+          },
+          "ocd-division/country:us/state:ca/county:san_francisco/council_district:6": {
+           "name": "San Francisco CA city-county council district 6",
+           "officeIndices": [
+            15
+           ]
+          },
+          "ocd-division/country:us/state:ca/sldl:17": {
+           "name": "California Assembly district 17",
+           "officeIndices": [
+            7
+           ]
+          },
+          "ocd-division/country:us/state:ca/sldu:11": {
+           "name": "California State Senate district 11",
+           "officeIndices": [
+            6
+           ]
+          }
+         },
+         "offices": [
+          {
+           "name": "President of the United States",
+           "divisionId": "ocd-division/country:us",
+           "levels": [
+            "country"
+           ],
+           "roles": [
+            "headOfState",
+            "headOfGovernment"
+           ],
+           "officialIndices": [
+            0
+           ]
+          },
+          {
+           "name": "Vice-President of the United States",
+           "divisionId": "ocd-division/country:us",
+           "levels": [
+            "country"
+           ],
+           "roles": [
+            "deputyHeadOfGovernment"
+           ],
+           "officialIndices": [
+            1
+           ]
+          },
+          {
+           "name": "United States Senate",
+           "divisionId": "ocd-division/country:us/state:ca",
+           "levels": [
+            "country"
+           ],
+           "roles": [
+            "legislatorUpperBody"
+           ],
+           "officialIndices": [
+            2,
+            3
+           ]
+          },
+          {
+           "name": "United States House of Representatives CA-12",
+           "divisionId": "ocd-division/country:us/state:ca/cd:12",
+           "levels": [
+            "country"
+           ],
+           "roles": [
+            "legislatorLowerBody"
+           ],
+           "officialIndices": [
+            4
+           ]
+          },
+          {
+           "name": "Governor",
+           "divisionId": "ocd-division/country:us/state:ca",
+           "levels": [
+            "administrativeArea1"
+           ],
+           "roles": [
+            "headOfGovernment"
+           ],
+           "officialIndices": [
+            5
+           ]
+          },
+          {
+           "name": "Lieutenant Governor",
+           "divisionId": "ocd-division/country:us/state:ca",
+           "levels": [
+            "administrativeArea1"
+           ],
+           "roles": [
+            "deputyHeadOfGovernment"
+           ],
+           "officialIndices": [
+            6
+           ]
+          },
+          {
+           "name": "CA State Senate District 11",
+           "divisionId": "ocd-division/country:us/state:ca/sldu:11",
+           "levels": [
+            "administrativeArea1"
+           ],
+           "roles": [
+            "legislatorUpperBody"
+           ],
+           "officialIndices": [
+            7
+           ]
+          },
+          {
+           "name": "CA State Assembly District 17",
+           "divisionId": "ocd-division/country:us/state:ca/sldl:17",
+           "levels": [
+            "administrativeArea1"
+           ],
+           "roles": [
+            "legislatorLowerBody"
+           ],
+           "officialIndices": [
+            8
+           ]
+          },
+          {
+           "name": "Mayor",
+           "divisionId": "ocd-division/country:us/state:ca/county:san_francisco",
+           "officialIndices": [
+            9
+           ]
+          },
+          {
+           "name": "Sheriff",
+           "divisionId": "ocd-division/country:us/state:ca/county:san_francisco",
+           "officialIndices": [
+            10
+           ]
+          },
+          {
+           "name": "Treasurer",
+           "divisionId": "ocd-division/country:us/state:ca/county:san_francisco",
+           "officialIndices": [
+            11
+           ]
+          },
+          {
+           "name": "County Clerk",
+           "divisionId": "ocd-division/country:us/state:ca/county:san_francisco",
+           "officialIndices": [
+            12
+           ]
+          },
+          {
+           "name": "City Attorney",
+           "divisionId": "ocd-division/country:us/state:ca/county:san_francisco",
+           "officialIndices": [
+            13
+           ]
+          },
+          {
+           "name": "Assessor-Recorder",
+           "divisionId": "ocd-division/country:us/state:ca/county:san_francisco",
+           "officialIndices": [
+            14
+           ]
+          },
+          {
+           "name": "District Attorney",
+           "divisionId": "ocd-division/country:us/state:ca/county:san_francisco",
+           "officialIndices": [
+            15
+           ]
+          },
+          {
+           "name": "Board of Supervisors, District 6",
+           "divisionId": "ocd-division/country:us/state:ca/county:san_francisco/council_district:6",
+           "officialIndices": [
+            16
+           ]
+          },
+          {
+           "name": "State Treasurer",
+           "divisionId": "ocd-division/country:us/state:ca",
+           "officialIndices": [
+            17
+           ]
+          },
+          {
+           "name": "Attorney General",
+           "divisionId": "ocd-division/country:us/state:ca",
+           "officialIndices": [
+            18
+           ]
+          },
+          {
+           "name": "State Controller",
+           "divisionId": "ocd-division/country:us/state:ca",
+           "officialIndices": [
+            19
+           ]
+          },
+          {
+           "name": "Secretary of State",
+           "divisionId": "ocd-division/country:us/state:ca",
+           "officialIndices": [
+            20
+           ]
+          },
+          {
+           "name": "Insurance Commissioner",
+           "divisionId": "ocd-division/country:us/state:ca",
+           "officialIndices": [
+            21
+           ]
+          },
+          {
+           "name": "State Superintendent of Public Instruction",
+           "divisionId": "ocd-division/country:us/state:ca",
+           "officialIndices": [
+            22
+           ]
+          }
+         ],
+         "officials": [
+          {
+           "name": "Donald J. Trump",
+           "address": [
+            {
+             "line1": "The White House",
+             "line2": "1600 Pennsylvania Avenue NW",
+             "city": "Washington",
+             "state": "DC",
+             "zip": "20500"
+            }
+           ],
+           "party": "Republican",
+           "phones": [
+            "(202) 456-1111"
+           ],
+           "urls": [
+            "http://www.whitehouse.gov/"
+           ],
+           "channels": [
+            {
+             "type": "GooglePlus",
+             "id": "+whitehouse"
+            },
+            {
+             "type": "Facebook",
+             "id": "whitehouse"
+            },
+            {
+             "type": "Twitter",
+             "id": "whitehouse"
+            }
+           ]
+          },
+          {
+           "name": "Mike Pence",
+           "address": [
+            {
+             "line1": "The White House",
+             "line2": "1600 Pennsylvania Avenue NW",
+             "city": "Washington",
+             "state": "DC",
+             "zip": "20500"
+            }
+           ],
+           "party": "Republican",
+           "phones": [
+            "(202) 456-1111"
+           ],
+           "urls": [
+            "http://www.whitehouse.gov/"
+           ],
+           "channels": [
+            {
+             "type": "GooglePlus",
+             "id": "+whitehouse"
+            },
+            {
+             "type": "Facebook",
+             "id": "whitehouse"
+            },
+            {
+             "type": "Twitter",
+             "id": "whitehouse"
+            }
+           ]
+          },
+          {
+           "name": "Dianne Feinstein",
+           "address": [
+            {
+             "line1": "331 Hart Senate Office Building",
+             "city": "Washington",
+             "state": "DC",
+             "zip": "20510"
+            }
+           ],
+           "party": "Democratic",
+           "phones": [
+            "(202) 224-3841"
+           ],
+           "urls": [
+            "http://www.feinstein.senate.gov/public/"
+           ],
+           "photoUrl": "http://bioguide.congress.gov/bioguide/photo/F/F000062.jpg",
+           "channels": [
+            {
+             "type": "Facebook",
+             "id": "SenatorFeinstein"
+            },
+            {
+             "type": "Twitter",
+             "id": "SenFeinstein"
+            },
+            {
+             "type": "YouTube",
+             "id": "SenatorFeinstein"
+            }
+           ]
+          },
+          {
+           "name": "Kamala D. Harris",
+           "address": [
+            {
+             "line1": "112 Hart Senate Office Building",
+             "city": "Washington",
+             "state": "DC",
+             "zip": "20510"
+            }
+           ],
+           "party": "Democratic",
+           "phones": [
+            "(202) 224-3553"
+           ],
+           "urls": [
+            "https://www.harris.senate.gov"
+           ],
+           "photoUrl": "https://www.harris.senate.gov/sites/default/files/harris1.jpg",
+           "channels": [
+            {
+             "type": "Facebook",
+             "id": "KamalaHarris"
+            },
+            {
+             "type": "Twitter",
+             "id": "KamalaHarris"
+            }
+           ]
+          },
+          {
+           "name": "Nancy Pelosi",
+           "address": [
+            {
+             "line1": "233 Cannon House Office Building",
+             "city": "Washington",
+             "state": "DC",
+             "zip": "20515"
+            }
+           ],
+           "party": "Democratic",
+           "phones": [
+            "(202) 225-4965"
+           ],
+           "urls": [
+            "http://pelosi.house.gov/"
+           ],
+           "photoUrl": "http://bioguide.congress.gov/bioguide/photo/P/P000197.jpg",
+           "channels": [
+            {
+             "type": "Facebook",
+             "id": "NancyPelosi"
+            },
+            {
+             "type": "Twitter",
+             "id": "NancyPelosi"
+            },
+            {
+             "type": "YouTube",
+             "id": "nancypelosi"
+            },
+            {
+             "type": "GooglePlus",
+             "id": "+NancyPelosi"
+            }
+           ]
+          },
+          {
+           "name": "Edmund G. Brown Jr.",
+           "address": [
+            {
+             "line1": "c/o State Capitol",
+             "line2": "Suite 1173",
+             "city": "Sacramento",
+             "state": "CA",
+             "zip": "95814"
+            }
+           ],
+           "party": "Democratic",
+           "phones": [
+            "(916) 445-2841"
+           ],
+           "urls": [
+            "http://gov.ca.gov/home.php"
+           ],
+           "channels": [
+            {
+             "type": "GooglePlus",
+             "id": "+JerryBrown"
+            },
+            {
+             "type": "Facebook",
+             "id": "jerrybrown"
+            },
+            {
+             "type": "Twitter",
+             "id": "JerryBrownGov"
+            }
+           ]
+          },
+          {
+           "name": "Gavin Newsom",
+           "address": [
+            {
+             "line1": "State Capitol",
+             "line2": "Suite 1114",
+             "city": "Sacramento",
+             "state": "CA",
+             "zip": "95814"
+            }
+           ],
+           "party": "Democratic",
+           "phones": [
+            "(916) 445-8994"
+           ],
+           "urls": [
+            "http://www.ltg.ca.gov/"
+           ],
+           "photoUrl": "http://www.ltg.ca.gov/images/newsimages/i2.png",
+           "emails": [
+            "gavin@gavinnewsom.com"
+           ],
+           "channels": [
+            {
+             "type": "GooglePlus",
+             "id": "+GavinNewsom"
+            },
+            {
+             "type": "Facebook",
+             "id": "GavinNewsom"
+            },
+            {
+             "type": "Twitter",
+             "id": "gavinnewsom"
+            }
+           ]
+          },
+          {
+           "name": "Scott Wiener",
+           "address": [
+            {
+             "line1": "STATE CAPITOL",
+             "line2": "1303 10TH ST",
+             "city": "Sacramento",
+             "state": "CA",
+             "zip": "95814"
+            }
+           ],
+           "party": "Democratic",
+           "phones": [
+            "(916) 651-4011"
+           ],
+           "urls": [
+            "http://sd11.senate.ca.gov"
+           ],
+           "photoUrl": "http://senate.ca.gov/sites/senate.ca.gov/files/senator_photos/wiener.jpg",
+           "emails": [
+            "senator.wiener@senate.ca.gov"
+           ],
+           "channels": [
+            {
+             "type": "Facebook",
+             "id": "ScottWiener2"
+            },
+            {
+             "type": "Twitter",
+             "id": "Scott_Wiener"
+            }
+           ]
+          },
+          {
+           "name": "David Chiu",
+           "address": [
+            {
+             "line1": "PO BOX 942849",
+             "city": "Sacramento",
+             "state": "CA",
+             "zip": "94249"
+            }
+           ],
+           "party": "Democratic",
+           "phones": [
+            "(916) 319-2017"
+           ],
+           "urls": [
+            "http://asmdc.org/members/a17"
+           ],
+           "photoUrl": "http://assembly.ca.gov/sites/assembly.ca.gov/files/memberphotos/AD17_Chiu_Portrait150_20141201.jpg",
+           "emails": [
+            "Assemblymember.Chiu@assembly.ca.gov"
+           ],
+           "channels": [
+            {
+             "type": "Facebook",
+             "id": "davidchiu.sf"
+            },
+            {
+             "type": "Twitter",
+             "id": "DavidChiu"
+            }
+           ]
+          },
+          {
+           "name": "Edwin M. Lee",
+           "address": [
+            {
+             "line1": "City Hall",
+             "line2": "Room 200",
+             "line3": "1 Dr., Carlton B. Goodlett Place",
+             "city": "San Francisco",
+             "state": "CA",
+             "zip": "94102"
+            }
+           ],
+           "party": "Nonpartisan",
+           "phones": [
+            "(415) 554-6141"
+           ],
+           "urls": [
+            "http://sfmayor.org/"
+           ],
+           "photoUrl": "http://www.sfmayor.org/Modules/ShowImage.aspx?imageid=205",
+           "emails": [
+            "mayoredwinlee@sfgov.org"
+           ],
+           "channels": [
+            {
+             "type": "GooglePlus",
+             "id": "111835610796626268769"
+            },
+            {
+             "type": "Facebook",
+             "id": "mayoredwinlee"
+            },
+            {
+             "type": "Twitter",
+             "id": "mayoredlee"
+            },
+            {
+             "type": "YouTube",
+             "id": "mayoredlee"
+            }
+           ]
+          },
+          {
+           "name": "Vicki L. Hennessy",
+           "address": [
+            {
+             "line1": "1 Carlton Goodlett Place",
+             "city": "San Francisco",
+             "state": "CA",
+             "zip": "94102"
+            }
+           ],
+           "party": "Nonpartisan",
+           "phones": [
+            "(415) 554-7225"
+           ],
+           "urls": [
+            "http://www6.sfgov.org/index.aspx?page=138"
+           ],
+           "emails": [
+            "sheriff@sfgov.org"
+           ]
+          },
+          {
+           "name": "Jose Cisneros",
+           "address": [
+            {
+             "line1": "City Hall",
+             "line2": "Room 140",
+             "line3": "1 Dr., Carlton B. Goodlett Place,",
+             "city": "San Francisco",
+             "state": "CA",
+             "zip": "94102"
+            }
+           ],
+           "party": "Nonpartisan",
+           "phones": [
+            "(415) 701-2311"
+           ],
+           "urls": [
+            "http://www.sftreasurer.org/"
+           ]
+          },
+          {
+           "name": "Karen Hong",
+           "address": [
+            {
+             "line1": "City Hall",
+             "line2": "Room 168 1 Dr.",
+             "line3": "Carlton B. Goodlett Place",
+             "city": "San Francisco",
+             "state": "CA",
+             "zip": "94102"
+            }
+           ],
+           "party": "Nonpartisan",
+           "phones": [
+            "(415) 554-4950"
+           ],
+           "urls": [
+            "http://www.sfgov.org/countyclerk"
+           ],
+           "emails": [
+            "county.clerk@sfgov.org"
+           ]
+          },
+          {
+           "name": "Dennis J. Herrera",
+           "address": [
+            {
+             "line1": "City Hall",
+             "line2": "Room 234 1 Dr.",
+             "line3": "Carlton B. Goodlett Place",
+             "city": "San Francisco",
+             "state": "CA",
+             "zip": "94102"
+            }
+           ],
+           "party": "Nonpartisan",
+           "phones": [
+            "(415) 554-4700"
+           ],
+           "urls": [
+            "http://www.sfcityattorney.org/"
+           ],
+           "emails": [
+            "cityattorney@sfgov.org"
+           ],
+           "channels": [
+            {
+             "type": "Facebook",
+             "id": "sfcityattorney"
+            },
+            {
+             "type": "Twitter",
+             "id": "sfcityattorney"
+            }
+           ]
+          },
+          {
+           "name": "Carmen Chu",
+           "address": [
+            {
+             "line1": "1155 Market Street",
+             "line2": "Fifth Floor",
+             "city": "San Francisco",
+             "state": "CA",
+             "zip": "94103"
+            }
+           ],
+           "party": "Nonpartisan",
+           "phones": [
+            "(415) 554-5531"
+           ],
+           "urls": [
+            "http://www.sfassessor.org/"
+           ],
+           "emails": [
+            "assessor@sfgov.org"
+           ]
+          },
+          {
+           "name": "George Gascon",
+           "address": [
+            {
+             "line1": "850 Bryant Street,",
+             "city": "San Francisco",
+             "state": "CA",
+             "zip": "94103"
+            }
+           ],
+           "party": "Nonpartisan",
+           "phones": [
+            "(415) 553-1751"
+           ],
+           "urls": [
+            "http://www.sfdistrictattorney.org/"
+           ],
+           "emails": [
+            "DistrictAttorney@sfgov.org"
+           ],
+           "channels": [
+            {
+             "type": "Facebook",
+             "id": "133101130104597"
+            },
+            {
+             "type": "Twitter",
+             "id": "SFDAOffice"
+            }
+           ]
+          },
+          {
+           "name": "Jane Kim",
+           "address": [
+            {
+             "line1": "1 Dr. Carlton B. Goodlett Place",
+             "line2": "Room 244",
+             "city": "San Francisco",
+             "state": "CA",
+             "zip": "94102"
+            }
+           ],
+           "party": "Nonpartisan",
+           "phones": [
+            "(415) 554-7970"
+           ],
+           "urls": [
+            "http://www.sfbos.org/index.aspx?page=11324"
+           ],
+           "photoUrl": "http://www.sfbos.org/Modules/ShowImage.aspx?imageid=5324",
+           "emails": [
+            "Jane.Kim@sfgov.org"
+           ],
+           "channels": [
+            {
+             "type": "Twitter",
+             "id": "SupeJaneKim"
+            }
+           ]
+          },
+          {
+           "name": "John Chiang",
+           "address": [
+            {
+             "line1": "P.O. Box 942809",
+             "city": "Sacramento",
+             "state": "CA",
+             "zip": "94209"
+            }
+           ],
+           "party": "Democratic",
+           "phones": [
+            "(916) 653-2995"
+           ],
+           "urls": [
+            "http://www.treasurer.ca.gov/"
+           ],
+           "channels": [
+            {
+             "type": "Facebook",
+             "id": "CaliforniaSTO"
+            },
+            {
+             "type": "Twitter",
+             "id": "STONewsroom"
+            }
+           ]
+          },
+          {
+           "name": "Xavier Becerra",
+           "party": "Democratic"
+          },
+          {
+           "name": "Betty T. Yee",
+           "address": [
+            {
+             "line1": "P.O. Box 942850",
+             "city": "Sacramento",
+             "state": "CA",
+             "zip": "94250"
+            }
+           ],
+           "party": "Democratic",
+           "phones": [
+            "(916) 445-2636"
+           ],
+           "urls": [
+            "http://www.sco.ca.gov/"
+           ],
+           "channels": [
+            {
+             "type": "Facebook",
+             "id": "137732083043662"
+            },
+            {
+             "type": "Twitter",
+             "id": "CAController"
+            }
+           ]
+          },
+          {
+           "name": "Alex Padilla",
+           "address": [
+            {
+             "line1": "1500 11th Street,",
+             "city": "Sacramento",
+             "state": "CA",
+             "zip": "95814"
+            }
+           ],
+           "party": "Democratic",
+           "phones": [
+            "(916) 653-7244"
+           ],
+           "urls": [
+            "http://www.sos.ca.gov/"
+           ],
+           "emails": [
+            "secretary.padilla@sos.ca.gov"
+           ],
+           "channels": [
+            {
+             "type": "Facebook",
+             "id": "CaliforniaSOS"
+            },
+            {
+             "type": "Twitter",
+             "id": "CASOSvote"
+            }
+           ]
+          },
+          {
+           "name": "Dave Jones",
+           "address": [
+            {
+             "line1": "300 Capitol Mall,",
+             "city": "Sacramento",
+             "state": "CA",
+             "zip": "95814"
+            }
+           ],
+           "party": "Democratic",
+           "phones": [
+            "(916) 492-3500"
+           ],
+           "urls": [
+            "http://www.insurance.ca.gov/"
+           ],
+           "channels": [
+            {
+             "type": "GooglePlus",
+             "id": "108233445289196913395"
+            },
+            {
+             "type": "Facebook",
+             "id": "insurancecagov"
+            },
+            {
+             "type": "Twitter",
+             "id": "CDINews"
+            }
+           ]
+          },
+          {
+           "name": "Tom Torlakson",
+           "address": [
+            {
+             "line1": "1430 N Street",
+             "line2": "Suite 5602",
+             "city": "Sacramento",
+             "state": "CA",
+             "zip": "95814"
+            }
+           ],
+           "party": "Nonpartisan",
+           "phones": [
+            "(916) 319-0800"
+           ],
+           "urls": [
+            "http://www.cde.ca.gov/"
+           ],
+           "emails": [
+            "superintendent@cde.ca.gov"
+           ],
+           "channels": [
+            {
+             "type": "Facebook",
+             "id": "CAEducation"
+            },
+            {
+             "type": "Twitter",
+             "id": "cadepted"
+            }
+           ]
+          }
+         ]
+        }
+    http_version: 
+  recorded_at: Fri, 10 Feb 2017 03:07:30 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/civicinfo/v2/representatives?address=633%20Folsom%20Street%20San%20Francisco,%20CA&key=AIzaSyCuFyDjIpvOTKqWmiFrETtgYSTzw0mtAv0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Mon, 20 Feb 2017 20:29:42 GMT
+      Date:
+      - Mon, 20 Feb 2017 20:29:42 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - '"QYIb6hT4IEibTNmpmkuDYCNGqvQ/zfqP1ZCnFP_r0BsPyvPp3x84zIw"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '14628'
+      Server:
+      - GSE
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="35,34"
+    body:
+      encoding: UTF-8
+      string: |
+        {
+         "kind": "civicinfo#representativeInfoResponse",
+         "normalizedInput": {
+          "line1": "633 Folsom Street",
+          "city": "San Francisco",
+          "state": "CA",
+          "zip": "94107"
+         },
+         "divisions": {
+          "ocd-division/country:us": {
+           "name": "United States",
+           "officeIndices": [
+            0,
+            1
+           ]
+          },
+          "ocd-division/country:us/state:ca": {
+           "name": "California",
+           "officeIndices": [
+            2,
+            4,
+            5,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+           ]
+          },
+          "ocd-division/country:us/state:ca/cd:12": {
+           "name": "California's 12th congressional district",
+           "officeIndices": [
+            3
+           ]
+          },
+          "ocd-division/country:us/state:ca/county:san_francisco": {
+           "name": "San Francisco County",
+           "alsoKnownAs": [
+            "ocd-division/country:us/state:ca/place:san_francisco"
+           ],
+           "officeIndices": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+           ]
+          }
+         },
+         "offices": [
+          {
+           "name": "President of the United States",
+           "divisionId": "ocd-division/country:us",
+           "levels": [
+            "country"
+           ],
+           "roles": [
+            "headOfState",
+            "headOfGovernment"
+           ],
+           "officialIndices": [
+            0
+           ]
+          },
+          {
+           "name": "Vice-President of the United States",
+           "divisionId": "ocd-division/country:us",
+           "levels": [
+            "country"
+           ],
+           "roles": [
+            "deputyHeadOfGovernment"
+           ],
+           "officialIndices": [
+            1
+           ]
+          },
+          {
+           "name": "United States Senate",
+           "divisionId": "ocd-division/country:us/state:ca",
+           "levels": [
+            "country"
+           ],
+           "roles": [
+            "legislatorUpperBody"
+           ],
+           "officialIndices": [
+            2,
+            3
+           ]
+          },
+          {
+           "name": "United States House of Representatives CA-12",
+           "divisionId": "ocd-division/country:us/state:ca/cd:12",
+           "levels": [
+            "country"
+           ],
+           "roles": [
+            "legislatorLowerBody"
+           ],
+           "officialIndices": [
+            4
+           ]
+          },
+          {
+           "name": "Governor",
+           "divisionId": "ocd-division/country:us/state:ca",
+           "levels": [
+            "administrativeArea1"
+           ],
+           "roles": [
+            "headOfGovernment"
+           ],
+           "officialIndices": [
+            5
+           ]
+          },
+          {
+           "name": "Lieutenant Governor",
+           "divisionId": "ocd-division/country:us/state:ca",
+           "levels": [
+            "administrativeArea1"
+           ],
+           "roles": [
+            "deputyHeadOfGovernment"
+           ],
+           "officialIndices": [
+            6
+           ]
+          },
+          {
+           "name": "Mayor",
+           "divisionId": "ocd-division/country:us/state:ca/county:san_francisco",
+           "officialIndices": [
+            7
+           ]
+          },
+          {
+           "name": "Sheriff",
+           "divisionId": "ocd-division/country:us/state:ca/county:san_francisco",
+           "officialIndices": [
+            8
+           ]
+          },
+          {
+           "name": "Treasurer",
+           "divisionId": "ocd-division/country:us/state:ca/county:san_francisco",
+           "officialIndices": [
+            9
+           ]
+          },
+          {
+           "name": "County Clerk",
+           "divisionId": "ocd-division/country:us/state:ca/county:san_francisco",
+           "officialIndices": [
+            10
+           ]
+          },
+          {
+           "name": "City Attorney",
+           "divisionId": "ocd-division/country:us/state:ca/county:san_francisco",
+           "officialIndices": [
+            11
+           ]
+          },
+          {
+           "name": "Assessor-Recorder",
+           "divisionId": "ocd-division/country:us/state:ca/county:san_francisco",
+           "officialIndices": [
+            12
+           ]
+          },
+          {
+           "name": "District Attorney",
+           "divisionId": "ocd-division/country:us/state:ca/county:san_francisco",
+           "officialIndices": [
+            13
+           ]
+          },
+          {
+           "name": "State Treasurer",
+           "divisionId": "ocd-division/country:us/state:ca",
+           "officialIndices": [
+            14
+           ]
+          },
+          {
+           "name": "Attorney General",
+           "divisionId": "ocd-division/country:us/state:ca",
+           "officialIndices": [
+            15
+           ]
+          },
+          {
+           "name": "State Controller",
+           "divisionId": "ocd-division/country:us/state:ca",
+           "officialIndices": [
+            16
+           ]
+          },
+          {
+           "name": "Secretary of State",
+           "divisionId": "ocd-division/country:us/state:ca",
+           "officialIndices": [
+            17
+           ]
+          },
+          {
+           "name": "Insurance Commissioner",
+           "divisionId": "ocd-division/country:us/state:ca",
+           "officialIndices": [
+            18
+           ]
+          },
+          {
+           "name": "State Superintendent of Public Instruction",
+           "divisionId": "ocd-division/country:us/state:ca",
+           "officialIndices": [
+            19
+           ]
+          }
+         ],
+         "officials": [
+          {
+           "name": "Donald J. Trump",
+           "address": [
+            {
+             "line1": "The White House",
+             "line2": "1600 Pennsylvania Avenue NW",
+             "city": "Washington",
+             "state": "DC",
+             "zip": "20500"
+            }
+           ],
+           "party": "Republican",
+           "phones": [
+            "(202) 456-1111"
+           ],
+           "urls": [
+            "http://www.whitehouse.gov/"
+           ],
+           "photoUrl": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/45/PE%20Color.jpg",
+           "channels": [
+            {
+             "type": "GooglePlus",
+             "id": "+whitehouse"
+            },
+            {
+             "type": "Facebook",
+             "id": "whitehouse"
+            },
+            {
+             "type": "Twitter",
+             "id": "whitehouse"
+            },
+            {
+             "type": "YouTube",
+             "id": "whitehouse"
+            }
+           ]
+          },
+          {
+           "name": "Mike Pence",
+           "address": [
+            {
+             "line1": "The White House",
+             "line2": "1600 Pennsylvania Avenue NW",
+             "city": "Washington",
+             "state": "DC",
+             "zip": "20500"
+            }
+           ],
+           "party": "Republican",
+           "phones": [
+            "(202) 456-1111"
+           ],
+           "urls": [
+            "http://www.whitehouse.gov/"
+           ],
+           "photoUrl": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/45/VPE%20Color.jpg",
+           "channels": [
+            {
+             "type": "GooglePlus",
+             "id": "+whitehouse"
+            },
+            {
+             "type": "Facebook",
+             "id": "whitehouse"
+            },
+            {
+             "type": "Twitter",
+             "id": "whitehouse"
+            }
+           ]
+          },
+          {
+           "name": "Dianne Feinstein",
+           "address": [
+            {
+             "line1": "331 Hart Senate Office Building",
+             "city": "Washington",
+             "state": "DC",
+             "zip": "20510"
+            }
+           ],
+           "party": "Democratic",
+           "phones": [
+            "(202) 224-3841"
+           ],
+           "urls": [
+            "http://www.feinstein.senate.gov/public/"
+           ],
+           "photoUrl": "http://bioguide.congress.gov/bioguide/photo/F/F000062.jpg",
+           "channels": [
+            {
+             "type": "Facebook",
+             "id": "SenatorFeinstein"
+            },
+            {
+             "type": "Twitter",
+             "id": "SenFeinstein"
+            },
+            {
+             "type": "YouTube",
+             "id": "SenatorFeinstein"
+            }
+           ]
+          },
+          {
+           "name": "Kamala D. Harris",
+           "address": [
+            {
+             "line1": "112 Hart Senate Office Building",
+             "city": "Washington",
+             "state": "DC",
+             "zip": "20510"
+            }
+           ],
+           "party": "Democratic",
+           "phones": [
+            "(202) 224-3553"
+           ],
+           "urls": [
+            "https://www.harris.senate.gov"
+           ],
+           "photoUrl": "https://www.harris.senate.gov/sites/default/files/harris1.jpg",
+           "channels": [
+            {
+             "type": "Facebook",
+             "id": "KamalaHarris"
+            },
+            {
+             "type": "Twitter",
+             "id": "KamalaHarris"
+            }
+           ]
+          },
+          {
+           "name": "Nancy Pelosi",
+           "address": [
+            {
+             "line1": "233 Cannon House Office Building",
+             "city": "Washington",
+             "state": "DC",
+             "zip": "20515"
+            }
+           ],
+           "party": "Democratic",
+           "phones": [
+            "(202) 225-4965"
+           ],
+           "urls": [
+            "http://pelosi.house.gov/"
+           ],
+           "photoUrl": "http://bioguide.congress.gov/bioguide/photo/P/P000197.jpg",
+           "channels": [
+            {
+             "type": "Facebook",
+             "id": "NancyPelosi"
+            },
+            {
+             "type": "Twitter",
+             "id": "NancyPelosi"
+            },
+            {
+             "type": "YouTube",
+             "id": "nancypelosi"
+            },
+            {
+             "type": "GooglePlus",
+             "id": "+NancyPelosi"
+            }
+           ]
+          },
+          {
+           "name": "Edmund G. Brown Jr.",
+           "address": [
+            {
+             "line1": "c/o State Capitol",
+             "line2": "Suite 1173",
+             "city": "Sacramento",
+             "state": "CA",
+             "zip": "95814"
+            }
+           ],
+           "party": "Democratic",
+           "phones": [
+            "(916) 445-2841"
+           ],
+           "urls": [
+            "http://gov.ca.gov/home.php"
+           ],
+           "channels": [
+            {
+             "type": "GooglePlus",
+             "id": "+JerryBrown"
+            },
+            {
+             "type": "Facebook",
+             "id": "jerrybrown"
+            },
+            {
+             "type": "Twitter",
+             "id": "JerryBrownGov"
+            }
+           ]
+          },
+          {
+           "name": "Gavin Newsom",
+           "address": [
+            {
+             "line1": "State Capitol",
+             "line2": "Suite 1114",
+             "city": "Sacramento",
+             "state": "CA",
+             "zip": "95814"
+            }
+           ],
+           "party": "Democratic",
+           "phones": [
+            "(916) 445-8994"
+           ],
+           "urls": [
+            "http://www.ltg.ca.gov/"
+           ],
+           "photoUrl": "http://www.ltg.ca.gov/images/newsimages/i2.png",
+           "emails": [
+            "gavin@gavinnewsom.com"
+           ],
+           "channels": [
+            {
+             "type": "GooglePlus",
+             "id": "+GavinNewsom"
+            },
+            {
+             "type": "Facebook",
+             "id": "GavinNewsom"
+            },
+            {
+             "type": "Twitter",
+             "id": "gavinnewsom"
+            }
+           ]
+          },
+          {
+           "name": "Edwin M. Lee",
+           "address": [
+            {
+             "line1": "City Hall",
+             "line2": "Room 200",
+             "line3": "1 Dr., Carlton B. Goodlett Place",
+             "city": "San Francisco",
+             "state": "CA",
+             "zip": "94102"
+            }
+           ],
+           "party": "Nonpartisan",
+           "phones": [
+            "(415) 554-6141"
+           ],
+           "urls": [
+            "http://sfmayor.org/"
+           ],
+           "photoUrl": "http://www.sfmayor.org/Modules/ShowImage.aspx?imageid=205",
+           "emails": [
+            "mayoredwinlee@sfgov.org"
+           ],
+           "channels": [
+            {
+             "type": "GooglePlus",
+             "id": "111835610796626268769"
+            },
+            {
+             "type": "Facebook",
+             "id": "mayoredwinlee"
+            },
+            {
+             "type": "Twitter",
+             "id": "mayoredlee"
+            },
+            {
+             "type": "YouTube",
+             "id": "mayoredlee"
+            }
+           ]
+          },
+          {
+           "name": "Vicki L. Hennessy",
+           "address": [
+            {
+             "line1": "1 Carlton Goodlett Place",
+             "city": "San Francisco",
+             "state": "CA",
+             "zip": "94102"
+            }
+           ],
+           "party": "Nonpartisan",
+           "phones": [
+            "(415) 554-7225"
+           ],
+           "urls": [
+            "http://www6.sfgov.org/index.aspx?page=138"
+           ],
+           "emails": [
+            "sheriff@sfgov.org"
+           ]
+          },
+          {
+           "name": "Jose Cisneros",
+           "address": [
+            {
+             "line1": "City Hall",
+             "line2": "Room 140",
+             "line3": "1 Dr., Carlton B. Goodlett Place,",
+             "city": "San Francisco",
+             "state": "CA",
+             "zip": "94102"
+            }
+           ],
+           "party": "Nonpartisan",
+           "phones": [
+            "(415) 701-2311"
+           ],
+           "urls": [
+            "http://www.sftreasurer.org/"
+           ]
+          },
+          {
+           "name": "Karen Hong",
+           "address": [
+            {
+             "line1": "City Hall",
+             "line2": "Room 168 1 Dr.",
+             "line3": "Carlton B. Goodlett Place",
+             "city": "San Francisco",
+             "state": "CA",
+             "zip": "94102"
+            }
+           ],
+           "party": "Nonpartisan",
+           "phones": [
+            "(415) 554-4950"
+           ],
+           "urls": [
+            "http://www.sfgov.org/countyclerk"
+           ],
+           "emails": [
+            "county.clerk@sfgov.org"
+           ]
+          },
+          {
+           "name": "Dennis J. Herrera",
+           "address": [
+            {
+             "line1": "City Hall",
+             "line2": "Room 234 1 Dr.",
+             "line3": "Carlton B. Goodlett Place",
+             "city": "San Francisco",
+             "state": "CA",
+             "zip": "94102"
+            }
+           ],
+           "party": "Nonpartisan",
+           "phones": [
+            "(415) 554-4700"
+           ],
+           "urls": [
+            "http://www.sfcityattorney.org/"
+           ],
+           "emails": [
+            "cityattorney@sfgov.org"
+           ],
+           "channels": [
+            {
+             "type": "Facebook",
+             "id": "sfcityattorney"
+            },
+            {
+             "type": "Twitter",
+             "id": "sfcityattorney"
+            }
+           ]
+          },
+          {
+           "name": "Carmen Chu",
+           "address": [
+            {
+             "line1": "1155 Market Street",
+             "line2": "Fifth Floor",
+             "city": "San Francisco",
+             "state": "CA",
+             "zip": "94103"
+            }
+           ],
+           "party": "Nonpartisan",
+           "phones": [
+            "(415) 554-5531"
+           ],
+           "urls": [
+            "http://www.sfassessor.org/"
+           ],
+           "emails": [
+            "assessor@sfgov.org"
+           ]
+          },
+          {
+           "name": "George Gascon",
+           "address": [
+            {
+             "line1": "850 Bryant Street,",
+             "city": "San Francisco",
+             "state": "CA",
+             "zip": "94103"
+            }
+           ],
+           "party": "Nonpartisan",
+           "phones": [
+            "(415) 553-1751"
+           ],
+           "urls": [
+            "http://www.sfdistrictattorney.org/"
+           ],
+           "emails": [
+            "DistrictAttorney@sfgov.org"
+           ],
+           "channels": [
+            {
+             "type": "Facebook",
+             "id": "133101130104597"
+            },
+            {
+             "type": "Twitter",
+             "id": "SFDAOffice"
+            }
+           ]
+          },
+          {
+           "name": "John Chiang",
+           "address": [
+            {
+             "line1": "P.O. Box 942809",
+             "city": "Sacramento",
+             "state": "CA",
+             "zip": "94209"
+            }
+           ],
+           "party": "Democratic",
+           "phones": [
+            "(916) 653-2995"
+           ],
+           "urls": [
+            "http://www.treasurer.ca.gov/"
+           ],
+           "channels": [
+            {
+             "type": "Facebook",
+             "id": "CaliforniaSTO"
+            },
+            {
+             "type": "Twitter",
+             "id": "STONewsroom"
+            }
+           ]
+          },
+          {
+           "name": "Xavier Becerra",
+           "address": [
+            {
+             "line1": "Office of the Attorney General 1300 \"I\" Street",
+             "city": "Sacramento",
+             "state": "CA",
+             "zip": "95814"
+            }
+           ],
+           "party": "Democratic",
+           "phones": [
+            "(916) 445-9555"
+           ],
+           "urls": [
+            "https://oag.ca.gov/"
+           ],
+           "channels": [
+            {
+             "type": "Facebook",
+             "id": "XavierBecerra"
+            },
+            {
+             "type": "Twitter",
+             "id": "AGBecerra"
+            }
+           ]
+          },
+          {
+           "name": "Betty T. Yee",
+           "address": [
+            {
+             "line1": "P.O. Box 942850",
+             "city": "Sacramento",
+             "state": "CA",
+             "zip": "94250"
+            }
+           ],
+           "party": "Democratic",
+           "phones": [
+            "(916) 445-2636"
+           ],
+           "urls": [
+            "http://www.sco.ca.gov/"
+           ],
+           "channels": [
+            {
+             "type": "Facebook",
+             "id": "137732083043662"
+            },
+            {
+             "type": "Twitter",
+             "id": "CAController"
+            }
+           ]
+          },
+          {
+           "name": "Alex Padilla",
+           "address": [
+            {
+             "line1": "1500 11th Street,",
+             "city": "Sacramento",
+             "state": "CA",
+             "zip": "95814"
+            }
+           ],
+           "party": "Democratic",
+           "phones": [
+            "(916) 653-7244"
+           ],
+           "urls": [
+            "http://www.sos.ca.gov/"
+           ],
+           "emails": [
+            "secretary.padilla@sos.ca.gov"
+           ],
+           "channels": [
+            {
+             "type": "Facebook",
+             "id": "CaliforniaSOS"
+            },
+            {
+             "type": "Twitter",
+             "id": "CASOSvote"
+            }
+           ]
+          },
+          {
+           "name": "Dave Jones",
+           "address": [
+            {
+             "line1": "300 Capitol Mall,",
+             "city": "Sacramento",
+             "state": "CA",
+             "zip": "95814"
+            }
+           ],
+           "party": "Democratic",
+           "phones": [
+            "(916) 492-3500"
+           ],
+           "urls": [
+            "http://www.insurance.ca.gov/"
+           ],
+           "channels": [
+            {
+             "type": "GooglePlus",
+             "id": "108233445289196913395"
+            },
+            {
+             "type": "Facebook",
+             "id": "insurancecagov"
+            },
+            {
+             "type": "Twitter",
+             "id": "CDINews"
+            }
+           ]
+          },
+          {
+           "name": "Tom Torlakson",
+           "address": [
+            {
+             "line1": "1430 N Street",
+             "line2": "Suite 5602",
+             "city": "Sacramento",
+             "state": "CA",
+             "zip": "95814"
+            }
+           ],
+           "party": "Nonpartisan",
+           "phones": [
+            "(916) 319-0800"
+           ],
+           "urls": [
+            "http://www.cde.ca.gov/"
+           ],
+           "emails": [
+            "superintendent@cde.ca.gov"
+           ],
+           "channels": [
+            {
+             "type": "Facebook",
+             "id": "CAEducation"
+            },
+            {
+             "type": "Twitter",
+             "id": "cadepted"
+            }
+           ]
+          }
+         ]
+        }
+    http_version: 
+  recorded_at: Mon, 20 Feb 2017 20:29:42 GMT
+recorded_with: VCR 3.0.3

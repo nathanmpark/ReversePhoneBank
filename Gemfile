@@ -10,9 +10,15 @@ gem 'dotenv-rails'
 gem 'awesome_print'
 gem 'httparty'
 
+gem "active_model_serializers"
+gem 'rack-cors'
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
+  gem 'webmock'
+  gem 'vcr'
+  gem 'rails-controller-testing'
 end
 
 group :development do
