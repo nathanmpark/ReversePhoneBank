@@ -36,5 +36,10 @@ module ReversePhoneBank
         methods: %i(get post put patch delete options head)
       end
     end
+    
+    config.action_dispatch.default_headers = {
+      'Access-Control-Allow-Origin' => 'https://myvoice.graynorton.com',
+      'Access-Control-Request-Method' => %w{GET POST OPTIONS}.join(",")
+    }
   end
 end
