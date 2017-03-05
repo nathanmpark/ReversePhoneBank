@@ -26,6 +26,7 @@ class Address < ApplicationRecord
 
   def self.assign_districts(user)
 
+
     return false unless @rep_data
     return false unless @rep_data['divisions']
 
