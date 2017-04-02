@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170226220410) do
+ActiveRecord::Schema.define(version: 20170402054759) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(version: 20170226220410) do
     t.integer  "extended_zip"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "campaign_districts", force: :cascade do |t|
+    t.integer  "campaign_id"
+    t.integer  "district_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["campaign_id"], name: "index_campaign_districts_on_campaign_id", using: :btree
+    t.index ["district_id"], name: "index_campaign_districts_on_district_id", using: :btree
   end
 
   create_table "campaign_tags", force: :cascade do |t|
