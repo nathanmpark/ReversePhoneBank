@@ -4,10 +4,13 @@ RSpec.describe UsersController, type: :controller do
 
   let(:user1) {User.first}
   let(:users) {User.all}
+  let(:user) {User.first}
 
   describe 'GET index' do
 
     before(:each) do
+      # byebug
+
       get :index
     end
 
