@@ -37,7 +37,7 @@
     <type label="SET" length="1" sql="SET" quote=""/>
     <type label="Bit" length="0" sql="bit" quote=""/>
   </group>
-</datatypes><table x="301" y="352" name="users">
+</datatypes><table x="902" y="624" name="users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -64,7 +64,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="574" y="423" name="campaigns">
+<table x="901" y="347" name="campaigns">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -88,7 +88,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="687" y="30" name="reps">
+<table x="900" y="102" name="reps">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -113,23 +113,23 @@
 <part>id</part>
 </key>
 </table>
-<table x="552" y="270" name="campaign_users">
+<table x="651" y="402" name="campaign_users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
-<row name="user_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default><relation table="users" row="id" />
-</row>
 <row name="campaign_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="campaigns" row="id" />
+</row>
+<row name="user_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="users" row="id" />
 </row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
 </table>
-<table x="1052" y="450" name="tags">
+<table x="1353" y="634" name="tags">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -140,7 +140,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="801" y="502" name="campaign_tags">
+<table x="1146" y="533" name="campaign_tags">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -156,7 +156,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="50" y="302" name="addresses">
+<table x="302" y="454" name="addresses">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -182,7 +182,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="51" y="102" name="district_users">
+<table x="102" y="203" name="district_users">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -212,7 +212,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="852" y="351" name="campaign_reps">
+<table x="1145" y="372" name="campaign_reps">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -228,7 +228,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="500" y="51" name="offices">
+<table x="501" y="27" name="offices">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -246,7 +246,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="1051" y="12" name="rep_phone_numbers">
+<table x="1354" y="15" name="rep_phone_numbers">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -261,7 +261,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="1053" y="123" name="rep_channels">
+<table x="1353" y="151" name="rep_channels">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -279,7 +279,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="1050" y="262" name="rep_urls">
+<table x="1352" y="303" name="rep_urls">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -290,6 +290,22 @@
 <row name="url" null="1" autoincrement="0">
 <datatype>MEDIUMTEXT</datatype>
 <default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="501" y="210" name="campaign_districts">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="campaign_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="campaigns" row="id" />
+</row>
+<row name="district_id" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="districts" row="id" />
+</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
