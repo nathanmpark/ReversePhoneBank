@@ -31,7 +31,7 @@ user[address][extended_zip]
 #### Logging In:
 
 ```bash
-$ curl -H "Content-Type: application/json" -X POST -d '{"email":"tom@tom.com","password":"tomtom"}' http://localhost:3000/authenticate
+$ curl -H "Content-Type: application/json" -X POST -d '{"email":"tom@tom.com","password":"tomtom"}' http://rpb-dev-api.herokuapp.com/authenticate
 
 ```
 Returns a payload like:
@@ -44,7 +44,7 @@ Returns a payload like:
 Access any restricted page by sending the auth token you received at login as an Authorization header.
 
 ```bash
-curl -H "Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0ODgyMjk0MjR9WN0DZMNdc7ZlZLHG93eoD1NM" http://localhost:3000/users/1
+curl -v -H "Content-Type: application/json" -H "Authorization: eyJ0eXAiOiJKV1orizationOi eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0OTEyMzQxMzJ9.4I2IXLIu6TVsX2lmLf58oy5OGdd0i2BMExNZV22wSII" GET https://rpb-dev-api.herokuapp.com/users/1
 ```
 
 Returns a Payload like:
