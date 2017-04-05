@@ -11,7 +11,7 @@ class AddressesController < ApplicationController
 
     if @address.save
       @user.address = @address
-      @reps = Address.get_reps_for_address(@address, @user)
+        @reps = Address.get_reps_for_address(@address, @user)
       render json: @reps
     else
       render json: @address.errors
