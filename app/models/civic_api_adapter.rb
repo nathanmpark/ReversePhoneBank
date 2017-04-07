@@ -19,13 +19,11 @@ class CivicAPIAdapter
   end
 
   def parse_reps(rep_data)
-    # p "in parse reps " * 10
+    # p "in parse_reps " * 10
     # ap rep_data
     @rep_data = rep_data
     return false unless @rep_data
     return false unless @rep_data['divisions']
-
-    # user.districts = []
 
     # Go through divisions, find or create districts
     @rep_data['divisions'].map do |division_id, division_data|
@@ -33,7 +31,6 @@ class CivicAPIAdapter
       next if division_id.include?('court')
 
       district = District.find_or_initialize_by(division_id: division_id)
-      # user.districts << district
       district.update(name: division_data['name'])
 
       unless district.save
