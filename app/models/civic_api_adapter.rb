@@ -30,6 +30,8 @@ class CivicAPIAdapter
     # Go through divisions, find or create districts
     @rep_data['divisions'].map do |division_id, division_data|
 
+      next if division_id.include?('court')
+
       district = District.find_or_initialize_by(division_id: division_id)
       # user.districts << district
       district.update(name: division_data['name'])
