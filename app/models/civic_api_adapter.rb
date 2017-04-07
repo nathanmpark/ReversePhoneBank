@@ -14,7 +14,7 @@ class CivicAPIAdapter
   end
 
   def get_all_reps_by_state(state)
-    @options = { query: { key: @token, ocdId: "ocd-division/country:us/state:#{state}", recursive: 'true' } }
+    @options = { query: { key: @token, ocdId: "ocd-division/country:us/state:#{state}", recursive: true } }
     self.class.get('/representatives/ocdId', @options)
   end
 
@@ -27,9 +27,7 @@ class CivicAPIAdapter
 
     # Go through divisions, find or create districts
     @rep_data['divisions'].map do |division_id, division_data|
-
       next if division_id.include?('court')
-
       district = District.find_or_initialize_by(division_id: division_id)
       district.update(name: division_data['name'])
 
@@ -39,11 +37,11 @@ class CivicAPIAdapter
       end
 
       # Go through division refs, find or create offices if offices
-      break unless division_data['officeIndices']
+      next unless division_data['officeIndices']
       division_data['officeIndices'].map do |office_id|
 
         office = district.offices.find_or_create_by(name: @rep_data['offices'][office_id]['name'])
-        next unless office.reps.empty?
+        # next unless office.reps.empty?
         office.update(division_id: @rep_data['offices'][office_id]['divisionId'])
 
         unless office.save
@@ -52,7 +50,7 @@ class CivicAPIAdapter
         end
 
         # Go through office refs, find or create reps if reps
-        break unless @rep_data['offices'][office_id]['officialIndices']
+        next unless @rep_data['offices'][office_id]['officialIndices']
         @rep_data['offices'][office_id]['officialIndices'].map do |official_id|
 
           rep = Rep.find_or_create_by(name: @rep_data['officials'][official_id]['name'])

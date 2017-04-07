@@ -23,12 +23,19 @@ class Rep < ApplicationRecord
     @states.each do |state|
       @rep_data = @CivicAdapter.get_all_reps_by_state(state)
       @CivicAdapter.parse_reps(@rep_data)
+      true
     end
-    true
   end
 
-  def refresh
-
+  def self.refresh_state(state='ca')
+    @CivicAdapter = CivicAPIAdapter.new
+    @rep_data = @CivicAdapter.get_all_reps_by_state(state)
+    # ap @rep_data
+    # @rep_data['officials'].each_with_index do |rep, index|
+    #   byebug if rep['name'].include?('onning')
+    # end
+    @CivicAdapter.parse_reps(@rep_data)
+    true
   end
 
   def phone_numbers
