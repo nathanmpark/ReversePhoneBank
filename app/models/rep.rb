@@ -1,12 +1,10 @@
 class Rep < ApplicationRecord
 
-  # @states = ["al", "ak", "az", "ar", "ca", "co", "ct", "de", "fl", "ga",
-  #            "hi", "id", "il", "in", "ia", "ks", "ky", "la", "me", "md",
-  #            "ma", "mi", "mn", "ms", "mo", "mt", "ne", "nv", "nh", "nj",
-  #            "nm", "ny", "nc", "nd", "oh", "ok", "or", "pa", "ri", "sc",
-  #            "sd", "tn", "tx", "ut", "vt", "va", "wa", "wv", "wi", "wy"]
-
-    @states = ["tx", "ut", "vt", "va", "wa", "wv", "wi", "wy"]
+  @states = ["al", "ak", "az", "ar", "ca", "co", "ct", "de", "fl", "ga",
+             "hi", "id", "il", "in", "ia", "ks", "ky", "la", "me", "md",
+             "ma", "mi", "mn", "ms", "mo", "mt", "ne", "nv", "nh", "nj",
+             "nm", "ny", "nc", "nd", "oh", "ok", "or", "pa", "ri", "sc",
+             "sd", "tn", "tx", "ut", "vt", "va", "wa", "wv", "wi", "wy"]
 
   belongs_to :office
   belongs_to :address, optional: true
@@ -24,6 +22,7 @@ class Rep < ApplicationRecord
     @CivicAdapter = CivicAPIAdapter.new
     @states.each do |state|
       @rep_data = @CivicAdapter.get_all_reps_by_state(state)
+      return false unless @rep_data
       @CivicAdapter.parse_reps(@rep_data)
     end
     true
@@ -34,6 +33,7 @@ class Rep < ApplicationRecord
     @rep_data = @CivicAdapter.get_all_reps_by_state(state)
     return false unless @rep_data
     @CivicAdapter.parse_reps(@rep_data)
+    true
   end
 
   def phone_numbers
