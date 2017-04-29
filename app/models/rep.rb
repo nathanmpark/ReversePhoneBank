@@ -18,6 +18,7 @@ class Rep < ApplicationRecord
 
   validates :name, uniqueness: true
 
+  # Update data on ALL REPS
   def self.refresh_all
     @CivicAdapter = CivicAPIAdapter.new
     @states.each do |state|
@@ -28,6 +29,7 @@ class Rep < ApplicationRecord
     true
   end
 
+  # Update data on ALL REPS by state
   def self.refresh_state(state='ca')
     @CivicAdapter = CivicAPIAdapter.new
     @rep_data = @CivicAdapter.get_all_reps_by_state(state)
@@ -36,6 +38,48 @@ class Rep < ApplicationRecord
     true
   end
 
+  def self.find_reps(args = {})
+
+    @level       = args.fetch(:level, 'national')
+    @state       = args[:state]
+    @county      = args[:county]
+    @office_type = args[:office_type]
+    @name        = args[:name]
+    @party       = args[:party]
+
+    #### HOUSE REPS ####
+
+    if @level == 'national' && @office_type == 'house'
+
+      # Find House Reps by NAME
+      if @name
+        return Rep.joins(:office).where('division_id LIKE ? AND lower(reps.name) LIKE ?', '%cd:%', "%#{@name.downcase}%")
+      end
+
+      # Find all House Reps by STATE
+      if @state
+        return Rep.joins(:office).where('division_id LIKE ? AND lower(division_id) LIKE ?', "%cd:%", "%#{@state.downcase}%")
+      end
+
+      # Find all House Reps by PARTY
+      if  @party
+        return Rep.joins(:office).where('division_id LIKE ? AND lower(reps.party) LIKE ?', "%cd:%", "%#{@party.downcase}%")
+      end
+
+      # Find all House Reps
+      return Rep.joins(:office).where('division_id LIKE ?', '%cd:%')
+
+    end
+
+    # to add all house nationally
+    # level will be national
+    # no state will be passed
+    # need to get reps from each state that have divsion_id %cd:%
+
+  end
+
+
+  # Helpers
   def phone_numbers
     self.rep_phone_numbers.map { |num_obj| num_obj.number }
   end
