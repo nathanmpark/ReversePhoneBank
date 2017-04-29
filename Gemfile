@@ -9,6 +9,7 @@ gem 'puma', '~> 3.0'
 gem 'dotenv-rails'
 gem 'awesome_print'
 gem 'httparty'
+gem 'pry-rails'
 
 gem "active_model_serializers"
 gem 'rack-cors'
