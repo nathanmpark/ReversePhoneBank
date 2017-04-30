@@ -220,15 +220,28 @@ Valid User returns User show
 This route can accept the following attributes:
 
 ```ruby
-user[level] # Defaults to 'national' for MVP purposes
-user[office_type] # Currently can be one of 'house' or 'senate'
-user[state]
-user[county] # Not fully functional in MVP
-user[party]
-user[name] # Fuzzy type search so you could hit this endpoint on keyup or as a whole
+rep[office_type] # Currently can be one of 'house'(default) or 'senate'
+rep[name] # Fuzzy type search so you could hit this endpoint on keyup or as a whole
+rep[party]
+rep[state]
+rep[county] # Not fully functional in MVP
+rep[level] # Defaults to 'national' for MVP purposes
 ```
 
+If no additional attributes are passed the route will return all U.S. House Reps by default.
+
 A valid search will return a blob of relevant Rep data.
+
+#### Important Notes on Rep Search/Data:
+
+
+* The goal here is to ultimately have a single route which can return reps based on a wide range of dynamic inputs. However, as of this writing only U.S. Senate and House Reps are covered. Logic for lower level selections is much more complex and will require quite a bit of work. You can however search by name for any rep by passing the level as 'all'.
+```ruby
+rep[level] = 'all'
+rep[name] = '%some_partial_name_string%'
+```
+
+* Since DB row cost money I have only seeded the Production DB fully with California reps at this time. If you wish to run a full national DB from development drop into rails console and run Rep.refresh_all, then set your computer not to sleep and go spend a few hours with you family. ;-)
 
 ## Campaigns
 

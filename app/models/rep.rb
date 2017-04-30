@@ -95,6 +95,11 @@ class Rep < ApplicationRecord
 
     end
 
+    # All other reps require a general name lookup for now
+    if @level.downcase == 'all' && @name
+      return Rep.where('lower(reps.name) LIKE ?', "%#{@name.downcase}%")
+    end
+
   end
 
 
