@@ -7,10 +7,10 @@ Rails.application.routes.draw do
 
   resources :campaigns
   put 'campaigns/:id/:rep_uuid', to: 'campaigns#add_reps'
-  get 'campaigns/:campaign_id/user_reps', to: 'campaigns#user_reps'
+  get 'campaigns/:id/user_reps', to: 'campaigns#user_reps'
 
   post 'address_lookup', to: 'addresses#new'
 
-  post 'find_reps', to: 'reps#find_reps'
+  post 'reps/search', to: 'reps#find_reps'
 
 end
