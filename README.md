@@ -28,20 +28,6 @@ Currently native clients can consume the following endpoints:
 * PUT /campaigns
 * PUT /campaigns/:id/:rep_uuid
 
-User Attributes:
-```ruby
-user[first_name]
-user[last_name]
-user[email]
-user[phone]
-user[address][line_1]
-user[address][line_2]
-user[address][city]
-user[address][state]
-user[address][primary_zip]
-user[address][extended_zip]
-```
-
 ## Authentication:
 
 ```bash
@@ -207,10 +193,27 @@ Returns a payload like:
 ```
 
 #### Registering a new User
+```POST /users```
+
+This route accepts the following attributes:
+
+```ruby
+user[first_name]
+user[last_name]
+user[email]
+user[phone]
+user[address][line_1]
+user[address][line_2]
+user[address][city]
+user[address][state]
+user[address][primary_zip]
+user[address][extended_zip]
+```
 
 ```bash
 curl -d 'user[first_name]=Bugs&user[last_name]=Bunny&user[email]=bugs@bunny.com&user[phone]=(342)%20555-5578&user[password]=tomtom&user[password_confirmation]=tomtom&user[address][line_1]=4850%20SW%20Snow%20Cir&user[address][city]=Holt&user[address][state]=MO&user[address][primary_zip]=64048' http://localhost:3000/users
 ```
+
 
 Valid User returns User show
 
