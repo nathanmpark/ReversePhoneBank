@@ -32,13 +32,14 @@ class CampaignsController < ApplicationController
   def add_reps
     @campaign = Campaign.find(params[:id])
     @rep = Rep.find_by_uuid(params[:rep_uuid])
+    return render json: {error: 'Rep already added to this campaign'} if @campaign.reps.include?(@rep)
     return render json: {error: 'Rep not found'} unless @rep
     @campaign.reps << @rep
     render json: @campaign
   end
 
   def user_reps
-    @campaign = Campaign.find(params[:campaign_id])
+    @campaign = Campaign.find(params[:id])
     @reps = current_user.reps.merge(@campaign.reps)
     render json: @reps
   end
