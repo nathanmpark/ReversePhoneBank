@@ -47,9 +47,9 @@ class Rep < ApplicationRecord
     @name        = args[:name]
     @party       = args[:party]
 
-    #### HOUSE REPS ####
+    #### U.S. HOUSE REPS ####
 
-    if @level == 'national' && @office_type == 'house'
+    if @level.downcase == 'national' && @office_type.downcase == 'house'
 
       # Find House Reps by NAME
       if @name
@@ -71,10 +71,29 @@ class Rep < ApplicationRecord
 
     end
 
-    # to add all house nationally
-    # level will be national
-    # no state will be passed
-    # need to get reps from each state that have divsion_id %cd:%
+    #### U.S. SENATE ####
+
+    if @level.downcase == 'national' && @office_type.downcase == 'senate'
+
+      # Find Senators by NAME
+      if @name
+        return Rep.joins(:office).where('offices.name = ? AND lower(reps.name) LIKE ?', 'United States Senate', "%#{@name.downcase}%")
+      end
+
+      # Find Senators by STATE
+      if @state
+        return Rep.joins(:office).where('offices.name = ? AND lower(division_id) LIKE ?', 'United States Senate', "%state:#{@state.downcase}%")
+      end
+
+      # Find Senators by PARTY
+      if  @party
+        return Rep.joins(:office).where('offices.name = ? AND lower(reps.party) LIKE ?', 'United States Senate', "%#{@party.downcase}%")
+      end
+
+
+      # Find all U.S. Senators
+      return Rep.joins(:office).where(offices: {name: "United States Senate"})
+    end
 
   end
 
