@@ -37,6 +37,13 @@ class CampaignsController < ApplicationController
     render json: @campaign
   end
 
+  def user_reps
+    @campaign = Campaign.find(params[:campaign_id])
+    @reps = current_user.reps.merge(@campaign.reps)
+    render json: @reps
+  end
+
+
   private
 
   def campaign_params
