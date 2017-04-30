@@ -41,9 +41,9 @@ class Rep < ApplicationRecord
   def self.find_reps(args = {})
 
     @level       = args.fetch(:level, 'national')
+    @office_type = args.fetch(:office_type, 'house')
     @state       = args[:state]
     @county      = args[:county]
-    @office_type = args[:office_type]
     @name        = args[:name]
     @party       = args[:party]
 

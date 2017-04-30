@@ -24,16 +24,16 @@ class CampaignsController < ApplicationController
     end
   end
 
-  def add_reps
+  def show
     @campaign = Campaign.find(params[:id])
-    @rep = Rep.find_by_uuid(params[:rep_uuid])
-    render json: {error: 'Rep not found'} unless @rep
-    @campaign.reps << @rep
     render json: @campaign
   end
 
-  def show
+  def add_reps
     @campaign = Campaign.find(params[:id])
+    @rep = Rep.find_by_uuid(params[:rep_uuid])
+    return render json: {error: 'Rep not found'} unless @rep
+    @campaign.reps << @rep
     render json: @campaign
   end
 
