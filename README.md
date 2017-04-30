@@ -241,7 +241,7 @@ rep[level] = 'all'
 rep[name] = '%some_partial_name_string%'
 ```
 
-* Since DB row cost money I have only seeded the Production DB fully with California reps at this time. If you wish to run a full national DB from development drop into rails console and run Rep.refresh_all, then set your computer not to sleep and go spend a few hours with you family. ;-)
+* Since DB row cost money I have only seeded the Production DB fully with California reps at this time. If you wish to run a full national DB from development drop into rails console and run ```Rep.refresh_all```, then set your computer not to sleep and go spend a few hours with your family. ;-)
 
 ## Campaigns
 
