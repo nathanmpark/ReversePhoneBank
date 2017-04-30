@@ -1,5 +1,11 @@
 class Campaign < ApplicationRecord
 
+  validates :description, presence: true
+  validates :title, presence: true
+  #### Leaving out date validation for now until a format is agreed upon with front end
+  # validates :start_date, presence: true
+  # validates :end_date, presence: true
+
   has_many :campaign_districts
   has_many :districts, through: :campaign_districts
 

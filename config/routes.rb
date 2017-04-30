@@ -10,4 +10,6 @@ Rails.application.routes.draw do
 
   post 'find_reps', to: 'reps#find_reps'
 
+  put 'campaigns/:id/:rep_uuid', to: 'campaigns#add_reps'
+
 end

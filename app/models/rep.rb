@@ -66,7 +66,7 @@ class Rep < ApplicationRecord
         return Rep.joins(:office).where('division_id LIKE ? AND lower(reps.party) LIKE ?', "%cd:%", "%#{@party.downcase}%")
       end
 
-      # Find all House Reps
+      # Find all House Reps if no other options are passed
       return Rep.joins(:office).where('division_id LIKE ?', '%cd:%')
 
     end
@@ -86,13 +86,13 @@ class Rep < ApplicationRecord
       end
 
       # Find Senators by PARTY
-      if  @party
+      if @party
         return Rep.joins(:office).where('offices.name = ? AND lower(reps.party) LIKE ?', 'United States Senate', "%#{@party.downcase}%")
       end
 
-
-      # Find all U.S. Senators
+      # Find all U.S. Senators if no other options are passed
       return Rep.joins(:office).where(offices: {name: "United States Senate"})
+
     end
 
   end
