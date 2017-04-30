@@ -1,21 +1,35 @@
 # Reverse Phone Bank
-#### (Title pending)
+
+## (MyVoice)
 
 This app represents the API component of the Reverse Phone Bank.
 
-The server is currently deployed @ https://rpb-dev-api.herokuapp.com
+The dev server deployed @ https://rpb-dev-api.herokuapp.com
 
-### Usage
+## EndPoints
 
 Currently native clients can consume the following endpoints:
 
+#### Users
 * GET /users
 * GET /users/:id
-* POST /users
-* POST /address_lookup
+* POST /users (no auth)
+* POST /authenticate
+
+#### Reps
+* POST /reps/search (no auth)
+* POST /address_lookup (no auth)
+
+#### Campaigns
+* GET /campaigns
+* GET /campaigns/:id
+* GET /campaigns/:id/user_reps
+* POST /campaigns
+* PUT /campaigns
+* PUT /campaigns/:id/:rep_uuid
 
 User Attributes:
-```
+```ruby
 user[first_name]
 user[last_name]
 user[email]
@@ -28,7 +42,7 @@ user[address][primary_zip]
 user[address][extended_zip]
 ```
 
-#### Logging In:
+## Authentication:
 
 ```bash
 $ curl -H "Content-Type: application/json" -X POST -d '{"email":"tom@tom.com","password":"tomtom"}' http://rpb-dev-api.herokuapp.com/authenticate
@@ -42,6 +56,8 @@ Returns a payload like:
 #### Restricted Routes
 
 Access any restricted page by sending the auth token you received at login as an Authorization header.
+
+Auth token has a one week expiration.
 
 ```bash
 curl -v -H "Content-Type: application/json" -H "Authorization: eyJ0eXAiOiJKV1orizationOi eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0OTEyMzQxMzJ9.4I2IXLIu6TVsX2lmLf58oy5OGdd0i2BMExNZV22wSII" GET https://rpb-dev-api.herokuapp.com/users/1
@@ -197,6 +213,60 @@ curl -d 'user[first_name]=Bugs&user[last_name]=Bunny&user[email]=bugs@bunny.com&
 ```
 
 Valid User returns User show
+
+## Rep Search
+```POST /reps/search``` to find reps.
+
+This route can accept the following attributes:
+
+```ruby
+user[level] # Defaults to 'national' for MVP purposes
+user[office_type] # Currently can be one of 'house' or 'senate'
+user[state]
+user[county] # Not fully functional in MVP
+user[party]
+user[name] # Fuzzy type search so you could hit this endpoint on keyup or as a whole
+```
+
+A valid search will return a blob of relevant Rep data.
+
+## Campaigns
+
+#### Creation
+```POST /campaigns``` to create the initial campaign object. Adding reps to a campaign is accomplished via a PUT after creation is complete.
+
+This route can accept the following attributes:
+
+```ruby
+campaign[title]
+campaign[description]
+campaign[start_date]
+campaign[end_date]
+```
+
+No user info is needed as it is assumed (for now) that the owner of a campaign is the authenticated current_user
+
+A valid creation will return a new campaign object.
+
+PUT functionality also exists for updating the objects initial values.
+
+#### Adding Reps
+```PUT /campaigns/:id/:rep_uuid```
+
+This route accepts no additional attributes. Simply pass the UUID of a given rep.
+
+Currently the flow is to make a separate PUT for each rep you wish to add to a given campaign.
+
+A valid add will return the campaign blob with all associated reps.
+
+Errors are rendered for duplicate rep additions as well as when no rep is found.
+
+#### User Reps
+```GET /campaigns/:id/user_reps```
+
+This route accepts no additional attributes.
+
+Route will return all reps associated with both the given campaign and the currently authenticated user.
 
 ### Contributing
 PRs/Issues welcome.
