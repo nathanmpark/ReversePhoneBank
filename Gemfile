@@ -9,9 +9,15 @@ gem 'puma', '~> 3.0'
 gem 'dotenv-rails'
 gem 'awesome_print'
 gem 'httparty'
+gem 'pry-rails'
 
 gem "active_model_serializers"
 gem 'rack-cors'
+
+# Auth gems
+gem 'bcrypt'
+gem 'simple_command'
+gem 'jwt'
 
 group :development, :test do
   gem 'byebug', platform: :mri

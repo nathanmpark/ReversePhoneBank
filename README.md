@@ -1,18 +1,203 @@
 # Reverse Phone Bank
-#### (Title pending)
+
+## (MyVoice)
 
 This app represents the API component of the Reverse Phone Bank.
 
-### Usage
+The dev server deployed @ https://rpb-dev-api.herokuapp.com
+
+## EndPoints
 
 Currently native clients can consume the following endpoints:
 
+#### Users
 * GET /users
 * GET /users/:id
-* POST /users
+* POST /users (no auth)
+* POST /authenticate
 
-POST Attributes:
+#### Reps
+* POST /reps/search (no auth)
+* POST /address_lookup (no auth)
+
+#### Campaigns
+* GET /campaigns
+* GET /campaigns/:id
+* GET /campaigns/:id/user_reps
+* POST /campaigns
+* PUT /campaigns
+* PUT /campaigns/:id/:rep_uuid
+
+## Authentication:
+
+```bash
+$ curl -H "Content-Type: application/json" -X POST -d '{"email":"tom@tom.com","password":"tomtom"}' http://rpb-dev-api.herokuapp.com/authenticate
+
 ```
+Returns a payload like:
+```bash
+{"auth_token":"eyJ3eXAiOiJKV1QiLCJhbGciOiJIYzI1NiJ9.eyJ1c2VyX2lkLjoxLCJleHAiOjE0ODgyMiE0MzB9.CVqAjD1cii0HKwYbI3xgAMT3kfkiRhbRAXLs_n97rWU"}
+```
+
+#### Restricted Routes
+
+Access any restricted page by sending the auth token you received at login as an Authorization header.
+
+Auth token has a one week expiration.
+
+```bash
+curl -v -H "Content-Type: application/json" -H "Authorization: eyJ0eXAiOiJKV1orizationOi eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE0OTEyMzQxMzJ9.4I2IXLIu6TVsX2lmLf58oy5OGdd0i2BMExNZV22wSII" GET https://rpb-dev-api.herokuapp.com/users/1
+```
+
+Returns a Payload like:
+
+```json
+{
+  "first_name": "Tom",
+  "last_name": "TomTom",
+  "email": "tom@tom.com",
+  "phone": "(415) 555-0420",
+  "created_at": "2017-01-29T01:43:52.370Z",
+  "address": {
+    "line_1": "1 W Portal Ave",
+    "line_2": null,
+    "city": "San Francisco",
+    "state": "CA",
+    "primary_zip": 94127,
+    "extended_zip": null
+  },
+  "reps": [
+    {
+      "name": "Mike Pence",
+      "party": "Republican",
+      "email": null,
+      "img_url": null,
+      "address_string": "The White House 1600 Pennsylvania Avenue NW Washington, DC 20500",
+      "public_office": "Vice-President of the United States",
+      "public_office_id": "ocd-division/country:us",
+      "phone_numbers": [
+        "(202) 456-1111"
+      ],
+      "urls": [
+        "http://www.whitehouse.gov/"
+      ],
+      "channels": {
+        "GooglePlus": "+whitehouse",
+        "Facebook": "whitehouse",
+        "Twitter": "whitehouse"
+      }
+    },
+    {
+      "name": "Donald J. Trump",
+      "party": "Republican",
+      "email": null,
+      "img_url": null,
+      "address_string": "The White House 1600 Pennsylvania Avenue NW Washington, DC 20500",
+      "public_office": "President of the United States",
+      "public_office_id": "ocd-division/country:us",
+      "phone_numbers": [
+        "(202) 456-1111"
+      ],
+      "urls": [
+        "http://www.whitehouse.gov/"
+      ],
+      "channels": {
+        "GooglePlus": "+whitehouse",
+        "Facebook": "whitehouse",
+        "Twitter": "whitehouse"
+      }
+    }
+  ]
+}
+```
+
+#### Lookup Reps for a non registered user
+
+Note: An address must have at a minimum, a line_1 and a primary_zip attribute. Also this route utilizes a dummy user with email 'sample@sample.com' to make the rep relations valid.
+
+```bash
+curl -d 'address[line_1]=242%20Molimo%20Drive&address[primary_zip]=94127' http://localhost:3000/address_lookup
+```
+
+Returns a payload like:
+```json
+[
+  {
+    "id": 43,
+    "name": "Greg Abbott",
+    "party": "Republican",
+    "email": null,
+    "img_url": "http://gov.texas.gov/multimedia/photos/2015-GovernorAbbott-Portrait.jpg",
+    "address_string": "P.O. Box 12428 Austin, TX 78711",
+    "public_office": "Governor",
+    "public_office_id": "ocd-division/country:us/state:tx",
+    "uuid": "263e6e7a-0a52-48be-9e02-657b25e76b5f",
+    "phone_numbers": [
+      "(512) 463-2000"
+    ],
+    "urls": [
+      "http://www.governor.state.tx.us/"
+    ],
+    "channels": {
+      "GooglePlus": "114575192028324795215",
+      "Facebook": "TexasGovernor",
+      "Twitter": "TexGov"
+    }
+  },
+  {
+    "id": 1,
+    "name": "Donald J. Trump",
+    "party": "Republican",
+    "email": null,
+    "img_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/45/PE%20Color.jpg",
+    "address_string": "The White House 1600 Pennsylvania Avenue NW Washington, DC 20500",
+    "public_office": "President of the United States",
+    "public_office_id": "ocd-division/country:us",
+    "uuid": "ab638d15-0caf-4abc-a8d2-bb95a581ce74",
+    "phone_numbers": [
+      "(202) 456-1111"
+    ],
+    "urls": [
+      "http://www.whitehouse.gov/"
+    ],
+    "channels": {
+      "GooglePlus": "+whitehouse",
+      "Facebook": "whitehouse",
+      "Twitter": "whitehouse",
+      "YouTube": "whitehouse"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Mike Pence",
+    "party": "Republican",
+    "email": null,
+    "img_url": "https://www.whitehouse.gov/sites/whitehouse.gov/files/images/45/VPE%20Color.jpg",
+    "address_string": "The White House 1600 Pennsylvania Avenue NW Washington, DC 20500",
+    "public_office": "Vice-President of the United States",
+    "public_office_id": "ocd-division/country:us",
+    "uuid": "955044a8-bbbd-41bc-9ca6-ec7832fc7297",
+    "phone_numbers": [
+      "(202) 456-1111"
+    ],
+    "urls": [
+      "http://www.whitehouse.gov/"
+    ],
+    "channels": {
+      "GooglePlus": "+whitehouse",
+      "Facebook": "whitehouse",
+      "Twitter": "whitehouse"
+    }
+  }
+]
+```
+
+#### Registering a new User
+```POST /users```
+
+This route accepts the following attributes:
+
+```ruby
 user[first_name]
 user[last_name]
 user[email]
@@ -25,13 +210,79 @@ user[address][primary_zip]
 user[address][extended_zip]
 ```
 
-
-Sample POST:
-```
-https://rpb-dev-api.herokuapp.com/users?user[first_name]=Bugs&user[last_name]=Life&user[email]=bugs@example.com&user[phone]=(415) 689-5233&user[address][line_1]=2178 S.W. CR 534&user[address][city]=Mayo&user[address][state]=FL&user[address][primary_zip]=32066
+```bash
+curl -d 'user[first_name]=Bugs&user[last_name]=Bunny&user[email]=bugs@bunny.com&user[phone]=(342)%20555-5578&user[password]=tomtom&user[password_confirmation]=tomtom&user[address][line_1]=4850%20SW%20Snow%20Cir&user[address][city]=Holt&user[address][state]=MO&user[address][primary_zip]=64048' http://localhost:3000/users
 ```
 
-The server is currently deployed @ https://rpb-dev-api.herokuapp.com
+
+Valid User returns User show
+
+## Rep Search
+```POST /reps/search``` to find reps.
+
+This route can accept the following attributes:
+
+```ruby
+rep[office_type] # Currently can be one of 'house'(default) or 'senate'
+rep[name] # Fuzzy type search so you could hit this endpoint on keyup or as a whole
+rep[party]
+rep[state]
+rep[county] # Not fully functional in MVP
+rep[level] # Defaults to 'national' for MVP purposes
+```
+
+If no additional attributes are passed the route will return all U.S. House Reps by default.
+
+A valid search will return a blob of relevant Rep data.
+
+#### Important Notes on Rep Search/Data:
+
+
+* The goal here is to ultimately have a single route which can return reps based on a wide range of dynamic inputs. However, as of this writing only U.S. Senate and House Reps are covered. Logic for lower level selections is much more complex and will require quite a bit of work. You can however search by name for any rep by passing the level as 'all'.
+```ruby
+rep[level] = 'all'
+rep[name] = '%some_partial_name_string%'
+```
+
+* Since DB row cost money I have only seeded the Production DB fully with California reps at this time. If you wish to run a full national DB from development drop into rails console and run ```Rep.refresh_all```, then set your computer not to sleep and go spend a few hours with your family. ;-)
+
+## Campaigns
+
+#### Creation
+```POST /campaigns``` to create the initial campaign object. Adding reps to a campaign is accomplished via a PUT after creation is complete.
+
+This route can accept the following attributes:
+
+```ruby
+campaign[title]
+campaign[description]
+campaign[start_date]
+campaign[end_date]
+```
+
+No user info is needed as it is assumed (for now) that the owner of a campaign is the authenticated current_user
+
+A valid creation will return a new campaign object.
+
+PUT functionality also exists for updating the objects initial values.
+
+#### Adding Reps
+```PUT /campaigns/:id/:rep_uuid```
+
+This route accepts no additional attributes. Simply pass the UUID of a given rep.
+
+Currently the flow is to make a separate PUT for each rep you wish to add to a given campaign.
+
+A valid add will return the campaign blob with all associated reps.
+
+Errors are rendered for duplicate rep additions as well as when no rep is found.
+
+#### User Reps
+```GET /campaigns/:id/user_reps```
+
+This route accepts no additional attributes.
+
+Route will return all reps associated with both the given campaign and the currently authenticated user.
 
 ### Contributing
 PRs/Issues welcome.

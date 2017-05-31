@@ -10,10 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170220201223) do
+ActiveRecord::Schema.define(version: 20170402063022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
   create_table "addresses", force: :cascade do |t|
     t.string   "line_1"
@@ -24,6 +25,24 @@ ActiveRecord::Schema.define(version: 20170220201223) do
     t.integer  "extended_zip"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "campaign_districts", force: :cascade do |t|
+    t.integer  "campaign_id"
+    t.integer  "district_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["campaign_id"], name: "index_campaign_districts_on_campaign_id", using: :btree
+    t.index ["district_id"], name: "index_campaign_districts_on_district_id", using: :btree
+  end
+
+  create_table "campaign_reps", force: :cascade do |t|
+    t.integer  "campaign_id"
+    t.integer  "rep_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["campaign_id"], name: "index_campaign_reps_on_campaign_id", using: :btree
+    t.index ["rep_id"], name: "index_campaign_reps_on_rep_id", using: :btree
   end
 
   create_table "campaign_tags", force: :cascade do |t|
@@ -111,9 +130,9 @@ ActiveRecord::Schema.define(version: 20170220201223) do
     t.string   "img_url"
     t.integer  "address_id"
     t.integer  "office_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.text     "uuid"
+    t.datetime "created_at",                                       null: false
+    t.datetime "updated_at",                                       null: false
+    t.uuid     "uuid",       default: -> { "uuid_generate_v4()" }
     t.index ["address_id"], name: "index_reps_on_address_id", using: :btree
     t.index ["office_id"], name: "index_reps_on_office_id", using: :btree
   end
@@ -131,8 +150,9 @@ ActiveRecord::Schema.define(version: 20170220201223) do
     t.string   "phone"
     t.integer  "address_id"
     t.integer  "user_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.text     "password_digest"
     t.index ["address_id"], name: "index_users_on_address_id", using: :btree
   end
 
