@@ -4,6 +4,9 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    p "* " * 90
+    p @users
+    p "* " * 90
     render json: @users
   end
 

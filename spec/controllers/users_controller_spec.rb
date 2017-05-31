@@ -6,16 +6,39 @@ RSpec.describe UsersController, type: :controller do
   let(:users) {User.all}
   let(:user) {User.first}
 
+  let(:tom_address) {Address.create(
+            line_1:      '1 W Portal Ave',
+            city:        'San Francisco',
+            state:       'CA',
+            primary_zip: 94127)}
+
+  let(:tom) {User.create(
+            first_name:            'Tom',
+            last_name:             'TomTom',
+            email:                 'tom@tom.com',
+            phone:                 '(415) 555-0420',
+            address:               tom_address,
+            password:              'tomtom',
+            password_confirmation: 'tomtom')}
+
+
+  before(:each) do
+    allow(controller).to receive(:authenticate_request).and_return(true)
+  end
+
   describe 'GET index' do
 
-    before(:each) do
-      # byebug
 
+    before(:each) do
       get :index
     end
 
     it 'assigns all users to @users' do
-      expect(assigns(:users).length).to eq users.length
+      p "~" * 90
+      p User.all
+      p tom.errors.full_messages
+      p "~" * 90
+      expect(assigns(:users).length).to eq User.count
       expect(assigns(:users).first).to eq(user1)
     end
 
